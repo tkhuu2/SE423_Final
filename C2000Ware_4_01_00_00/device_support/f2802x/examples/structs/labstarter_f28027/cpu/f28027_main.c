@@ -156,7 +156,7 @@ void main(void)
     EPwm4Regs.ETSEL.bit.SOCAEN = 0; // Disable SOC on A group
     EPwm4Regs.TBCTL.bit.CTRMODE = 3; // freeze counter
     EPwm4Regs.ETSEL.bit.SOCASEL = 2; // Select Event when counter equal to PRD
-    EPwm4Regs.ETPS.bit.SOCAPRD = 1; // Generate pulse on 1st event (“pulse” is the same as “trigger”)
+    EPwm4Regs.ETPS.bit.SOCAPRD = 1; // Generate pulse on 1st event ("pulse" is the same as "trigger")
     EPwm4Regs.TBCTR = 0x0; // Clear counter
     EPwm4Regs.TBCTL.bit.PHSEN = 0; // Disable phase loading
     EPwm4Regs.TBCTL.bit.CLKDIV = 0; // divide by 1  50Mhz Clock
