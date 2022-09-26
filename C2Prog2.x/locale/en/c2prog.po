@@ -1,0 +1,213 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CodeSkin C2Prog\n"
+"POT-Creation-Date: 2021-02-14 00:04+0100\n"
+"PO-Revision-Date: 2021-02-09 19:35+0100\n"
+"Last-Translator: Ulrich Telle <ulrich@telle-online.eu>\n"
+"Language-Team: CodeSkin <info@codeskin.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-Basepath: ../../../code\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: wxTRANSLATE;_\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: include\n"
+
+#: src/c2progapp.cpp:90
+msgid "locale"
+msgstr ""
+
+#: src/c2progapp.cpp:107
+#, c-format
+msgid "Locale \"%s\" is unknown."
+msgstr ""
+
+#: src/c2progapp.cpp:142
+msgid "The requested locale could not be set successfully."
+msgstr ""
+
+#: src/c2progapp.cpp:147
+msgid "Application resource file 'c2prog.zrc' not found."
+msgstr ""
+
+#: src/c2progmain.cpp:153
+msgid "Quit"
+msgstr ""
+
+#: src/c2progmain.cpp:154
+msgid "File"
+msgstr ""
+
+#: src/c2progmain.cpp:156
+msgid "Settings"
+msgstr ""
+
+#: src/c2progmain.cpp:157
+msgid "Extra"
+msgstr ""
+
+#: src/c2progmain.cpp:159
+msgid "About C2Prog"
+msgstr ""
+
+#: src/c2progmain.cpp:160
+msgid "Manual"
+msgstr ""
+
+#: src/c2progmain.cpp:161
+msgid "Visit CodeSkin"
+msgstr ""
+
+#: src/c2progmain.cpp:163
+msgid "Automatically check for updates"
+msgstr ""
+
+#: src/c2progmain.cpp:164
+msgid "Check for update"
+msgstr ""
+
+#: src/c2progmain.cpp:165
+msgid "Help"
+msgstr ""
+
+#: src/c2progmain.cpp:182
+msgid "Firmware Image"
+msgstr ""
+
+#: src/c2progmain.cpp:193
+msgid "Programming Configuration"
+msgstr ""
+
+#: src/c2progmain.cpp:198 src/c2progmain.cpp:232
+msgid "Target:"
+msgstr ""
+
+#: src/c2progmain.cpp:211
+msgid "Configure..."
+msgstr ""
+
+#: src/c2progmain.cpp:214
+msgid "Save as ehx..."
+msgstr ""
+
+#: src/c2progmain.cpp:219
+msgid "Tools..."
+msgstr ""
+
+#: src/c2progmain.cpp:223
+msgid "Flasher"
+msgstr ""
+
+#: src/c2progmain.cpp:245
+msgid "Server Port:"
+msgstr ""
+
+#: src/c2progmain.cpp:253
+msgid "Attach to running processor"
+msgstr ""
+
+#: src/c2progmain.cpp:259
+msgid "Gdb"
+msgstr ""
+
+#: src/c2progmain.cpp:269
+msgid "Port"
+msgstr ""
+
+#: src/c2progmain.cpp:279
+msgid "Serial"
+msgstr ""
+
+#: src/c2progmain.cpp:284
+msgid "CAN"
+msgstr ""
+
+#: src/c2progmain.cpp:289
+msgid "JTAG"
+msgstr ""
+
+#: src/c2progmain.cpp:300
+msgid "Actions..."
+msgstr ""
+
+#: src/c2progmain.cpp:309
+msgid "Select Port..."
+msgstr ""
+
+#: src/c2progmain.cpp:315 src/c2progmain.cpp:581
+msgid "Program"
+msgstr ""
+
+#: src/c2progmain.cpp:497
+msgid "Please choose language:"
+msgstr ""
+
+#: src/c2progmain.cpp:497 src/c2progmain.cpp:502
+msgid "Language Settings"
+msgstr ""
+
+#: src/c2progmain.cpp:501
+#, c-format
+msgid ""
+"The selected language '%s' will be used on starting the application the next "
+"time."
+msgstr ""
+
+#: src/c2progmain.cpp:552
+msgid ""
+"The default browser could not be launched to display the CodeSkin Homepage."
+msgstr ""
+
+#: src/c2progmain.cpp:552
+msgid "Error displaying CodeSkin homepage"
+msgstr ""
+
+#: src/c2progmain.cpp:585
+msgid "Start server"
+msgstr ""
+
+#: src/c2progmain.cpp:612
+msgid "Browse..."
+msgstr ""
+
+#: src/c2progmain.cpp:616
+msgid "Remove"
+msgstr ""
+
+#: src/c2progmain.cpp:619
+msgid "Remove all"
+msgstr ""
+
+#: src/c2progmain.cpp:628
+msgid "Choose a Firmware Image File"
+msgstr ""
+
+#: src/c2progmain.cpp:629
+msgid "Firmware Image Files"
+msgstr ""
+
+#: src/c2progmain.h:33
+msgid "CodeSkin Chip Programmer"
+msgstr ""
+
+#: src/resources.cpp:221
+msgid "English"
+msgstr ""
+
+#: src/resources.cpp:222
+#, c-format
+msgid "The language '%s' is not supported by the system."
+msgstr ""
+
+#: src/resources.cpp:229
+#, c-format
+msgid "Couldn't find/load the 'c2prog' and/or 'cldr' catalog for locale '%s'."
+msgstr ""
+
+#: src/resources.cpp:229
+msgid "unknown"
+msgstr ""

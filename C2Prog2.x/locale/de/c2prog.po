@@ -1,0 +1,569 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CodeSkin C2Prog\n"
+"POT-Creation-Date: 2022-06-29 11:40+0200\n"
+"PO-Revision-Date: 2022-06-29 11:41+0200\n"
+"Last-Translator: Ulrich Telle <ulrich@telle-online.eu>\n"
+"Language-Team: CodeSkin <info@codeskin.com>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1\n"
+"X-Poedit-Basepath: ../..\n"
+"X-Poedit-KeywordsList: wxTRANSLATE;_\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: aboutdialog.cpp:90
+msgid "Codeskin Chip Programmer (c) Codeskin LLC"
+msgstr "Codeskin Chip Programmierer (c) Codeskin LLC"
+
+#: aboutdialog.cpp:96
+msgid "Version:"
+msgstr "Version:"
+
+#: aboutdialog.cpp:102
+msgid "The use of C2Prog is governed by the following licenses:"
+msgstr "Die Verwendung von C2Prog unterliegt den folgenden Lizenzen:"
+
+#: aboutdialog.cpp:112 dynamicformdialog.cpp:133 portselection.cpp:105
+msgid "OK"
+msgstr "OK"
+
+#: aboutdialog.h:31 aboutdialog.h:34 c2progmain.cpp:135
+msgid "About C2Prog"
+msgstr "Über C2Prog"
+
+#: c2progapp.cpp:92
+msgid "locale"
+msgstr "Gebietsschema"
+
+#: c2progapp.cpp:109
+#, c-format
+msgid "Locale \"%s\" is unknown."
+msgstr "Gebietsschema \"%s\" ist unbekannt."
+
+#: c2progapp.cpp:149
+msgid "The requested locale could not be set successfully."
+msgstr ""
+"Das angeforderte Gebietsschema konnte nicht erfolgreich festgelegt werden."
+
+#: c2progapp.cpp:159
+msgid "Application resource file 'c2prog.zrc' not found."
+msgstr "Anwendungsressourcendatei 'c2prog.zrc' wurde nicht gefunden."
+
+#: c2progapp.cpp:173
+msgid "C2Prog API could not be loaded."
+msgstr "Das C2Prog-API konnte nicht geladen werden."
+
+#: c2progmain.cpp:114
+msgid "Flasher"
+msgstr "Flasher"
+
+#: c2progmain.cpp:115 gdbserverfeature.cpp:152
+msgid "Gdb"
+msgstr "Gdb"
+
+#: c2progmain.cpp:129
+msgid "Quit"
+msgstr "Beenden"
+
+#: c2progmain.cpp:130
+msgid "File"
+msgstr "Datei"
+
+#: c2progmain.cpp:132
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: c2progmain.cpp:133
+msgid "Extra"
+msgstr "Extra"
+
+#: c2progmain.cpp:136
+msgid "Manual"
+msgstr "Handbuch"
+
+#: c2progmain.cpp:137
+msgid "Visit CodeSkin"
+msgstr "CodeSkin besuchen"
+
+#: c2progmain.cpp:139 softwareupdate.cpp:113
+msgid "Automatically check for updates"
+msgstr "Automatische Überprüfung auf Updates"
+
+#: c2progmain.cpp:140
+msgid "Check for update"
+msgstr "Auf Update prüfen"
+
+#: c2progmain.cpp:141
+msgid "Help"
+msgstr "Hilfe"
+
+#: c2progmain.cpp:195
+msgid "Port"
+msgstr "Port"
+
+#: c2progmain.cpp:205
+msgid "Serial"
+msgstr "Seriell"
+
+#: c2progmain.cpp:210
+msgid "CAN"
+msgstr "CAN"
+
+#: c2progmain.cpp:215
+msgid "JTAG"
+msgstr "JTAG"
+
+#: c2progmain.cpp:226
+msgid "Actions..."
+msgstr "Aktionen..."
+
+#: c2progmain.cpp:235
+msgid "Select Port..."
+msgstr "Port auswählen..."
+
+#: c2progmain.cpp:241
+msgid "Program"
+msgstr "Programmieren"
+
+#: c2progmain.cpp:333
+msgid "Action settings could not be parsed."
+msgstr "Aktionseinstellungen konnten nicht analysiert werden."
+
+#: c2progmain.cpp:397
+msgid "Please choose language:"
+msgstr "Bitte eine Sprache auswählen:"
+
+#: c2progmain.cpp:397 c2progmain.cpp:402 c2progmain.cpp:408
+msgid "Language Settings"
+msgstr "Spracheinstellungen"
+
+#: c2progmain.cpp:401
+#, c-format
+msgid ""
+"The selected language '%s' will be used on starting the application the next "
+"time."
+msgstr ""
+"Die ausgewählte Sprache '%s' wird beim nächsten Starten der Anwendung "
+"verwendet."
+
+#: c2progmain.cpp:407
+msgid "No translation catalogs were found. English will be used."
+msgstr ""
+"Es wurden keine Übersetzungskataloge gefunden. Es wird Englisch verwendet."
+
+#: c2progmain.cpp:455
+msgid ""
+"The default browser could not be launched to display the CodeSkin Homepage."
+msgstr ""
+"Der Standardbrowser konnte nicht gestartet werden, um die CodeSkin-Homepage "
+"anzuzeigen."
+
+#: c2progmain.cpp:455
+msgid "Error displaying CodeSkin homepage"
+msgstr "Fehler beim Anzeigen der CodeSkin-Homepage"
+
+#: c2progmain.cpp:486
+msgid "You already have the latest version installed."
+msgstr "Sie haben bereits die neueste Version installiert."
+
+#: c2progmain.cpp:486 c2progmain.cpp:500 softwareupdate.h:22
+msgid "Software Update"
+msgstr "Software-Update"
+
+#: c2progmain.cpp:494 c2progmain.cpp:498
+msgid "Check for software update failed."
+msgstr "Die Überprüfung auf Software-Updates ist fehlgeschlagen."
+
+#: c2progmain.cpp:498 feedbackdialog.cpp:129 feedbackdialog.cpp:216
+#: firmwareimage.cpp:95 flasherfeature.cpp:600 gdbserverfeature.cpp:301
+#: resources.cpp:305
+#, c-format
+msgid "Error code %d"
+msgstr "Fehlercode %d"
+
+#: c2progmain.cpp:520
+msgid ""
+"The default browser could not be launched to display the CodeSkin Download "
+"page."
+msgstr ""
+"Der Standardbrowser konnte nicht gestartet werden, um die CodeSkin-"
+"Downloadseite anzuzeigen."
+
+#: c2progmain.cpp:520
+msgid "Error displaying CodeSkin Download page"
+msgstr "Fehler beim Anzeigen der CodeSkin-Downloadseite"
+
+#: c2progmain.cpp:578 portselection.h:44 portselection.h:47
+msgid "Port Selection"
+msgstr "Portauswahl"
+
+#: c2progmain.cpp:709 feedbackdialog.cpp:291
+msgid "Callback info could not be parsed."
+msgstr "Die Callback-Info konnte nicht analysiert werden."
+
+#: c2progmain.h:32
+msgid "CodeSkin Chip Programmer"
+msgstr "CodeSkin Chip Programmierer"
+
+#: dynamicformdatamodel.cpp:78
+msgid "Configuration data not a valid JSON object."
+msgstr "Die Konfigurationsdaten bilden kein gültiges JSON-Objekt."
+
+#: dynamicformdatamodel.cpp:82
+msgid "Form field specification not a valid JSON object."
+msgstr "Die Formularfeldspezifikation ist kein gültiges JSON-Objekt."
+
+#: dynamicformdatamodel.cpp:90
+msgid "Configuration data could not be parsed."
+msgstr "Konfigurationsdaten konnten nicht analysiert werden."
+
+#: dynamicformdatamodel.cpp:91 dynamicformdatamodel.cpp:97
+#, c-format
+msgid "JSON offset: %ld."
+msgstr "JSON-Offset: %ld."
+
+#: dynamicformdatamodel.cpp:96
+msgid "Form field specification could not be parsed."
+msgstr "Die Formularfeldspezifikation konnte nicht analysiert werden."
+
+#: dynamicformdatamodel.cpp:140
+#, c-format
+msgid "Invalid data type for scalar parameter '%s'."
+msgstr "Ungültiger Datentyp für den skalaren Parameter '%s'."
+
+#: dynamicformdatamodel.cpp:168
+#, c-format
+msgid "Invalid data type for 1-dimensional parameter '%s'."
+msgstr "Ungültiger Datentyp für den 1-dimensionalen Parameter '%s'."
+
+#: dynamicformdatamodel.cpp:173
+#, c-format
+msgid "Varying data types for 1-dimensional parameter '%s' not allowed."
+msgstr ""
+"Unterschiedliche Datentypen für den 1-dimensionalen Parameter '%s' sind "
+"nicht zulässig."
+
+#: dynamicformdatamodel.cpp:215
+#, c-format
+msgid "Invalid data type for 2-dimensional parameter '%s'."
+msgstr "Ungültiger Datentyp für den 2-dimensionalen Parameter '%s'."
+
+#: dynamicformdatamodel.cpp:220
+#, c-format
+msgid ""
+"Varying data types or array dimensions for 2-dimensional parameter '%s' not "
+"allowed."
+msgstr ""
+"Unterschiedliche Datentypen oder Arraydimensionen für den 2-dimensionalen "
+"Parameter '%s' sind nicht zulässig."
+
+#: dynamicformdatamodel.cpp:472
+#, c-format
+msgid "Types of parameter '%s' do not match: data type '%s' != field type '%s'"
+msgstr ""
+"Typen des Parameters '%s' stimmen nicht überein: Datentyp '%s' != Feldtyp "
+"'%s'"
+
+#: dynamicformdialog.cpp:113
+msgid "Data model of dynamic form not initialized."
+msgstr "Datenmodell des dynamischen Formulars nicht initialisiert."
+
+#: dynamicformdialog.cpp:115
+msgid "The dynamic form specification is invalid:"
+msgstr "Die dynamische Formularspezifikation ist ungültig:"
+
+#: dynamicformdialog.cpp:136 portselection.cpp:108
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: dynamicformdialog.cpp:139
+msgid "Revert"
+msgstr "Zurücksetzen"
+
+#: dynamicformdialog.h:22
+msgid "Dynamic Form Dialog"
+msgstr "Dynamischer Formulardialog"
+
+#: dynamicformvalidators.cpp:134
+msgid "The number entered is not a valid decimal number."
+msgstr "Die eingegebene Zahl ist keine gültige Dezimalzahl."
+
+#: dynamicformvalidators.cpp:134
+msgid "The number entered is not a valid hexadecimal number."
+msgstr "Die eingegebene Zahl ist keine gültige hexadezimale Zahl."
+
+#: dynamicformvalidators.cpp:155 dynamicformvalidators.cpp:275
+msgid "Validation conflict"
+msgstr "Validierungskonflikt"
+
+#: feedbackdialog.cpp:146
+msgid "Programming..."
+msgstr "Programmierung läuft..."
+
+#: feedbackdialog.cpp:172
+msgid "&OK"
+msgstr "&OK"
+
+#: feedbackdialog.cpp:179
+msgid "&Cancel"
+msgstr "&Abbrechen"
+
+#: feedbackdialog.cpp:321
+msgid "Do you really want to cancel the operation?"
+msgstr "Möchten Sie den Vorgang wirklich abbrechen?"
+
+#: feedbackdialog.cpp:321
+msgid "Please confirm"
+msgstr "Bitte bestätigen"
+
+#: feedbackdialog.h:36 feedbackdialog.h:39
+msgid "Feedback Dialog"
+msgstr "Feedback-Dialog"
+
+#: firmwareimage.cpp:57 flasherfeature.cpp:574
+msgid "Enter pass phrase"
+msgstr "Passwort eingeben"
+
+#: firmwareimage.cpp:57 flasherfeature.cpp:574
+msgid "EHX File Encryption"
+msgstr "EHX-Dateiverschlüsselung"
+
+#: firmwareimage.cpp:89 firmwareimage.cpp:94
+#, c-format
+msgid "Opening file '%s' failed."
+msgstr "Das Öffnen der Datei '%s' ist fehlgeschlagen."
+
+#: flasherfeature.cpp:99
+msgid "Firmware Image"
+msgstr "Firmware-Image"
+
+#: flasherfeature.cpp:110
+msgid "Programming Configuration"
+msgstr "Programmierkonfiguration"
+
+#: flasherfeature.cpp:115 gdbserverfeature.cpp:96
+msgid "Target:"
+msgstr "Ziel:"
+
+#: flasherfeature.cpp:128
+msgid "Configure..."
+msgstr "Konfigurieren..."
+
+#: flasherfeature.cpp:131
+msgid "Save as ehx..."
+msgstr "Speichern als ehx..."
+
+#: flasherfeature.cpp:136
+msgid "Tools..."
+msgstr "Werkzeuge..."
+
+#: flasherfeature.cpp:219
+#, c-format
+msgid "Error detected for firmware image file '%s':"
+msgstr "Fehler für Firmware-Image-Datei '%s' erkannt:"
+
+#: flasherfeature.cpp:221
+msgid ""
+"The file will be removed from the list of selected firmware image files."
+msgstr ""
+"Die Datei wird aus der Liste der ausgewählten Firmware-Image-Dateien "
+"entfernt."
+
+#: flasherfeature.cpp:222 flasherfeature.cpp:254 flasherfeature.cpp:602
+#: gdbserverfeature.cpp:200
+msgid "Error"
+msgstr "Fehler"
+
+#: flasherfeature.cpp:397
+msgid "Browse..."
+msgstr "Durchsuchen ..."
+
+#: flasherfeature.cpp:401
+msgid "Remove"
+msgstr "Entfernen"
+
+#: flasherfeature.cpp:404
+msgid "Remove all"
+msgstr "Alle entfernen"
+
+#: flasherfeature.cpp:427
+msgid "Choose a Firmware Image File"
+msgstr "Firmware-Image-Datei auswählen"
+
+#: flasherfeature.cpp:428
+msgid "Firmware Image Files"
+msgstr "Firmware-Image-Dateien"
+
+#: flasherfeature.cpp:509
+msgid "Keys must be formatted as hex numbers."
+msgstr "Schlüssel müssen als Hex-Zahlen formatiert werden."
+
+#: flasherfeature.cpp:510
+msgid "Hex numbers are specified with a leading '$' or '0x'."
+msgstr "Hex-Zahlen werden mit einem führenden '$' oder '0x' angegeben."
+
+#: flasherfeature.cpp:525
+msgid "Key not a valid 16-bit integer."
+msgstr "Schlüssel keine gültige 16-Bit-Ganzzahl."
+
+#: flasherfeature.cpp:540
+msgid "Target configuration"
+msgstr "Zielkonfiguration"
+
+#: flasherfeature.cpp:574
+msgid "(simply click OK for no encryption)"
+msgstr "(Klicken Sie einfach auf OK, um ohne Verschlüsselung fortzufahren)"
+
+#: flasherfeature.cpp:580
+msgid "Choose an EHX File"
+msgstr "Wählen Sie eine EHX-Datei"
+
+#: flasherfeature.cpp:581
+msgid "EHX Files"
+msgstr "EHX-Dateien"
+
+#: flasherfeature.cpp:593
+#, c-format
+msgid "Saving EHX file '%s' failed."
+msgstr "Das Speichern als EHX-Datei '%s' ist fehlgeschlagen."
+
+#: gdbserverfeature.cpp:109
+msgid "Server Port:"
+msgstr "Server-Port:"
+
+#: gdbserverfeature.cpp:122
+msgid "Attach to running processor"
+msgstr "An laufenden Prozessor anschließen"
+
+#: gdbserverfeature.cpp:193
+msgid "Gdb Server"
+msgstr "Gdb-Server"
+
+#: gdbserverfeature.cpp:295 gdbserverfeature.cpp:300
+#, c-format
+msgid "Activating feature '%s' failed."
+msgstr "Die Aktivierung der Funktion '%s' ist fehlgeschlagen."
+
+#: portselection.cpp:98
+msgid "Scan Ports"
+msgstr "Ports suchen"
+
+#: resources.cpp:225
+msgid "English"
+msgstr "Englisch"
+
+#: resources.cpp:226
+#, c-format
+msgid "The language '%s' is not supported by the system."
+msgstr "Die Sprache '%s' wird vom System nicht unterstützt."
+
+#: resources.cpp:233
+#, c-format
+msgid "Couldn't find/load the 'c2prog' and/or 'cldr' catalog for locale '%s'."
+msgstr ""
+"Der Katalog 'c2prog' und/oder 'cldr' für Gebietsschema '%s' konnte nicht "
+"gefunden/geladen werden."
+
+#: resources.cpp:233
+msgid "unknown"
+msgstr "unbekannt"
+
+#: resources.cpp:299 resources.cpp:304
+msgid "An unexpected API error occurred:"
+msgstr "Ein unerwarteter API-Fehler ist aufgetreten:"
+
+#: softwareupdate.cpp:96
+msgid ""
+"Would you like to check if a newer version of this application is available?"
+msgstr ""
+"Möchten Sie überprüfen, ob eine neuere Version dieser Anwendung verfügbar "
+"ist?"
+
+#: softwareupdate.cpp:102
+msgid "A newer version of this application is available"
+msgstr "Eine neuere Version dieser Anwendung ist verfügbar"
+
+#: softwareupdate.cpp:107
+msgid "Would you like to download it?"
+msgstr "Möchten Sie sie herunterladen?"
+
+#: softwareupdate.cpp:122
+msgid "&Yes"
+msgstr "&Ja"
+
+#: softwareupdate.cpp:125
+msgid "&No"
+msgstr "&Nein"
+
+#~ msgid "Start server"
+#~ msgstr "Server starten"
+
+#~ msgid "..."
+#~ msgstr "…"
+
+#~ msgid "Language"
+#~ msgstr "Sprache"
+
+#~ msgid ""
+#~ "The language setting takes effect on the next start of the application."
+#~ msgstr ""
+#~ "Die Spracheinstellung wird beim nächsten Start der Anwendung wirksam."
+
+#~ msgid "Country"
+#~ msgstr "Land"
+
+#~ msgid "Select default country"
+#~ msgstr "Standardland festlegen"
+
+#~ msgid "Currency"
+#~ msgstr "Währung"
+
+#~ msgid "Select default currency"
+#~ msgstr "Standardwährung festlegen"
+
+#~ msgid "Localization"
+#~ msgstr "Lokalisierung"
+
+#~ msgid "Automatic check for updates"
+#~ msgstr "Automatische Überprüfung auf Updates"
+
+#~ msgid "Enable automatic check for updates on start up"
+#~ msgstr "Automatische Überprüfung auf Updates beim Start aktivieren"
+
+#~ msgid ""
+#~ "The automatic \"Check for updates\" might fail due to missing or "
+#~ "inaccurate network settings. In such a case a short message will be "
+#~ "displayed on the status bar. Please make sure that your network settings "
+#~ "are always up-to-date."
+#~ msgstr ""
+#~ "Die automatische \"Überprüfung auf Updates\" schlägt möglicherweise "
+#~ "aufgrund fehlender oder ungenauer Netzwerkeinstellungen fehl. In einem "
+#~ "solchen Fall wird eine kurze Meldung auf der Statusleiste angezeigt. "
+#~ "Stellen Sie sicher, dass Ihre Netzwerkeinstellungen immer auf dem "
+#~ "neuesten Stand sind."
+
+#~ msgid "Automatic installation of updates"
+#~ msgstr "Automatische Installation von Updates"
+
+#~ msgid "Enable automatic installation of updates"
+#~ msgstr "Automatische Installation von Updates aktivieren"
+
+#~ msgid ""
+#~ "If automatic installation of updates is enabled, the update application "
+#~ "will automatically download and install available updates. Please be "
+#~ "aware that the main application will be automatically shut down, before "
+#~ "any updates are installed, that is, any open projects will be closed "
+#~ "without saving."
+#~ msgstr ""
+#~ "Wenn die automatische Installation von Updates aktiviert ist, lädt die "
+#~ "Updateanwendung die verfügbaren Updates automatisch herunter und "
+#~ "installiert sie. Bitte beachten Sie, dass die Hauptanwendung automatisch "
+#~ "heruntergefahren wird, bevor Updates installiert werden, d. h., alle "
+#~ "offenen Projekte werden ohne Speichern geschlossen."
+
+#~ msgid "Preferences"
+#~ msgstr "Einstellungen"

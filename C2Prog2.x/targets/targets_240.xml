@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<targets>	
+	<configs>
+		<config>
+			<name>2406_10MHz_4x</name>
+			<loadmethod>24_serial</loadmethod>
+			<chip>2406</chip>
+			<settings>
+				<primary>
+					<bootfile>flasher2406_7_130_10MHz_4x.hex</bootfile>
+				</primary>
+			</settings>			
+		</config>
+		<config>
+			<name>2407_10MHz_4x</name>
+			<loadmethod>24_serial</loadmethod>
+			<chip>2406</chip>
+			<settings>
+				<primary>
+					<bootfile>flasher2406_7_130_10MHz_4x.hex</bootfile>
+				</primary>
+			</settings>	
+		</config>
+		<config>
+			<name>2407_20MHz_2x</name>
+			<loadmethod>24_serial</loadmethod>
+			<chip>2406</chip>
+			<settings>
+				<primary>
+					<bootfile>flasher2406_7_130_20MHz_2x.hex</bootfile>
+				</primary>
+			</settings>				
+		</config>
+		<config>
+			<name>2406_7MHz5_4x</name>
+			<loadmethod>24_serial</loadmethod>
+			<chip>2406</chip>
+			<settings>
+				<primary>
+					<bootfile>flasher2406_7_130_7MHz5_4x.hex</bootfile>
+				</primary>
+			</settings>				
+		</config>		
+	</configs>
+
+	<loadmethods>
+		<loadmethod>
+			<name>24_serial</name>
+			<port>serial</port>
+			<loadset>
+				<primary>BootLoader240x</primary>
+				<secondary />
+			</loadset>
+			<settings>
+				<primary>
+					<bootbaud>38400</bootbaud>
+					<boottxdelay>10</boottxdelay>
+					<boottxburst>10</boottxburst>
+					<bootfile>flasher2406_7_130_10MHz_4x.hex</bootfile>
+				</primary>
+				<secondary>
+					<loadbaud>115200</loadbaud>
+					<loadtxdelay>5</loadtxdelay>
+					<loadtxspace>1</loadtxspace>
+				</secondary>
+			</settings>
+		</loadmethod>
+	</loadmethods>
+
+    <chips>
+		<chip>
+			<name>2406</name><!-- same as 2407-->	
+			<type>c240</type>	
+			<keynumber>4</keynumber>
+			<sectors>
+				<sector>
+					<number>1</number><tag>0</tag>
+					<start>0000</start><end>0FFF</end>
+				</sector>	
+				<sector>
+					<number>2</number><tag>1</tag>
+					<start>1000</start><end>3FFF</end>
+				</sector>		
+				<sector>
+					<number>3</number><tag>2</tag>
+					<start>4000</start><end>6FFF</end>
+				</sector>		
+				<sector>
+					<number>4</number><tag>3</tag>
+					<start>7000</start><end>7FFF</end>
+				</sector>		
+			</sectors>
+			<csmblock>
+				<start>0040</start><end>0043</end>
+			</csmblock>
+		</chip>		
+    </chips>
+</targets>
+
+

@@ -1,0 +1,1815 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CLDR - Common Locale Data Repository (Languages, countries, currencies)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-07 16:10+0100\n"
+"PO-Revision-Date: 2021-02-07 16:10+0100\n"
+"Last-Translator: Ulrich Telle <ulrich@telle-online.eu>\n"
+"Language-Team:  <ulrich@telle-online.eu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Language: en\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+"Language: en\n"
+#  Translations of Common Locale Data Repository entries
+
+#  Translations of language names
+
+msgid "Afar"
+msgstr "Afar"
+
+msgid "Abkhazian"
+msgstr "Abkhazian"
+
+msgid "Avestan"
+msgstr "Avestan"
+
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+msgid "Akan"
+msgstr "Akan"
+
+msgid "Amharic"
+msgstr "Amharic"
+
+msgid "Aragonese"
+msgstr "Aragonese"
+
+msgid "Arabic"
+msgstr "Arabic"
+
+msgid "Assamese"
+msgstr "Assamese"
+
+msgid "Avaric"
+msgstr "Avaric"
+
+msgid "Aymara"
+msgstr "Aymara"
+
+msgid "Azerbaijani"
+msgstr "Azerbaijani"
+
+msgid "Bashkir"
+msgstr "Bashkir"
+
+msgid "Belarusian"
+msgstr "Belarusian"
+
+msgid "Bulgarian"
+msgstr "Bulgarian"
+
+msgid "Bislama"
+msgstr "Bislama"
+
+msgid "Bambara"
+msgstr "Bambara"
+
+msgid "Bangla"
+msgstr "Bangla"
+
+msgid "Tibetan"
+msgstr "Tibetan"
+
+msgid "Breton"
+msgstr "Breton"
+
+msgid "Bosnian"
+msgstr "Bosnian"
+
+msgid "Catalan"
+msgstr "Catalan"
+
+msgid "Chechen"
+msgstr "Chechen"
+
+msgid "Chamorro"
+msgstr "Chamorro"
+
+msgid "Corsican"
+msgstr "Corsican"
+
+msgid "Cree"
+msgstr "Cree"
+
+msgid "Czech"
+msgstr "Czech"
+
+msgid "Church Slavic"
+msgstr "Church Slavic"
+
+msgid "Chuvash"
+msgstr "Chuvash"
+
+msgid "Welsh"
+msgstr "Welsh"
+
+msgid "Danish"
+msgstr "Danish"
+
+msgid "German"
+msgstr "German"
+
+msgid "Divehi"
+msgstr "Divehi"
+
+msgid "Dzongkha"
+msgstr "Dzongkha"
+
+msgid "Ewe"
+msgstr "Ewe"
+
+msgid "Greek"
+msgstr "Greek"
+
+msgid "English"
+msgstr "English"
+
+msgid "Esperanto"
+msgstr "Esperanto"
+
+msgid "Spanish"
+msgstr "Spanish"
+
+msgid "Estonian"
+msgstr "Estonian"
+
+msgid "Basque"
+msgstr "Basque"
+
+msgid "Persian"
+msgstr "Persian"
+
+msgid "Fulah"
+msgstr "Fulah"
+
+msgid "Finnish"
+msgstr "Finnish"
+
+msgid "Fijian"
+msgstr "Fijian"
+
+msgid "Faroese"
+msgstr "Faroese"
+
+msgid "French"
+msgstr "French"
+
+msgid "Western Frisian"
+msgstr "Western Frisian"
+
+msgid "Irish"
+msgstr "Irish"
+
+msgid "Scottish Gaelic"
+msgstr "Scottish Gaelic"
+
+msgid "Galician"
+msgstr "Galician"
+
+msgid "Guarani"
+msgstr "Guarani"
+
+msgid "Gujarati"
+msgstr "Gujarati"
+
+msgid "Manx"
+msgstr "Manx"
+
+msgid "Hausa"
+msgstr "Hausa"
+
+msgid "Hebrew"
+msgstr "Hebrew"
+
+msgid "Hindi"
+msgstr "Hindi"
+
+msgid "Hiri Motu"
+msgstr "Hiri Motu"
+
+msgid "Croatian"
+msgstr "Croatian"
+
+msgid "Haitian Creole"
+msgstr "Haitian Creole"
+
+msgid "Hungarian"
+msgstr "Hungarian"
+
+msgid "Armenian"
+msgstr "Armenian"
+
+msgid "Herero"
+msgstr "Herero"
+
+msgid "Interlingua"
+msgstr "Interlingua"
+
+msgid "Indonesian"
+msgstr "Indonesian"
+
+msgid "Interlingue"
+msgstr "Interlingue"
+
+msgid "Igbo"
+msgstr "Igbo"
+
+msgid "Sichuan Yi"
+msgstr "Sichuan Yi"
+
+msgid "Inupiaq"
+msgstr "Inupiaq"
+
+msgid "Ido"
+msgstr "Ido"
+
+msgid "Icelandic"
+msgstr "Icelandic"
+
+msgid "Italian"
+msgstr "Italian"
+
+msgid "Inuktitut"
+msgstr "Inuktitut"
+
+msgid "Japanese"
+msgstr "Japanese"
+
+msgid "Javanese"
+msgstr "Javanese"
+
+msgid "Georgian"
+msgstr "Georgian"
+
+msgid "Kongo"
+msgstr "Kongo"
+
+msgid "Kikuyu"
+msgstr "Kikuyu"
+
+msgid "Kuanyama"
+msgstr "Kuanyama"
+
+msgid "Kazakh"
+msgstr "Kazakh"
+
+msgid "Kalaallisut"
+msgstr "Kalaallisut"
+
+msgid "Khmer"
+msgstr "Khmer"
+
+msgid "Kannada"
+msgstr "Kannada"
+
+msgid "Korean"
+msgstr "Korean"
+
+msgid "Kanuri"
+msgstr "Kanuri"
+
+msgid "Kashmiri"
+msgstr "Kashmiri"
+
+msgid "Kurdish"
+msgstr "Kurdish"
+
+msgid "Komi"
+msgstr "Komi"
+
+msgid "Cornish"
+msgstr "Cornish"
+
+msgid "Kyrgyz"
+msgstr "Kyrgyz"
+
+msgid "Latin"
+msgstr "Latin"
+
+msgid "Luxembourgish"
+msgstr "Luxembourgish"
+
+msgid "Ganda"
+msgstr "Ganda"
+
+msgid "Limburgish"
+msgstr "Limburgish"
+
+msgid "Lingala"
+msgstr "Lingala"
+
+msgid "Lao"
+msgstr "Lao"
+
+msgid "Lithuanian"
+msgstr "Lithuanian"
+
+msgid "Luba-Katanga"
+msgstr "Luba-Katanga"
+
+msgid "Latvian"
+msgstr "Latvian"
+
+msgid "Malagasy"
+msgstr "Malagasy"
+
+msgid "Marshallese"
+msgstr "Marshallese"
+
+msgid "Maori"
+msgstr "Maori"
+
+msgid "Macedonian"
+msgstr "Macedonian"
+
+msgid "Malayalam"
+msgstr "Malayalam"
+
+msgid "Mongolian"
+msgstr "Mongolian"
+
+msgid "Marathi"
+msgstr "Marathi"
+
+msgid "Malay"
+msgstr "Malay"
+
+msgid "Maltese"
+msgstr "Maltese"
+
+msgid "Burmese"
+msgstr "Burmese"
+
+msgid "Nauru Language"
+msgstr "Nauru Language"
+
+msgid "Norwegian Bokmål"
+msgstr "Norwegian Bokmål"
+
+msgid "North Ndebele"
+msgstr "North Ndebele"
+
+msgid "Nepali"
+msgstr "Nepali"
+
+msgid "Ndonga"
+msgstr "Ndonga"
+
+msgid "Dutch"
+msgstr "Dutch"
+
+msgid "Norwegian Nynorsk"
+msgstr "Norwegian Nynorsk"
+
+msgid "Norwegian"
+msgstr "Norwegian"
+
+msgid "South Ndebele"
+msgstr "South Ndebele"
+
+msgid "Navajo"
+msgstr "Navajo"
+
+msgid "Nyanja"
+msgstr "Nyanja"
+
+msgid "Occitan"
+msgstr "Occitan"
+
+msgid "Ojibwa"
+msgstr "Ojibwa"
+
+msgid "Oromo"
+msgstr "Oromo"
+
+msgid "Odia"
+msgstr "Odia"
+
+msgid "Ossetic"
+msgstr "Ossetic"
+
+msgid "Punjabi"
+msgstr "Punjabi"
+
+msgid "Pali"
+msgstr "Pali"
+
+msgid "Polish"
+msgstr "Polish"
+
+msgid "Pashto"
+msgstr "Pashto"
+
+msgid "Portuguese"
+msgstr "Portuguese"
+
+msgid "Quechua"
+msgstr "Quechua"
+
+msgid "Romansh"
+msgstr "Romansh"
+
+msgid "Rundi"
+msgstr "Rundi"
+
+msgid "Romanian"
+msgstr "Romanian"
+
+msgid "Russian"
+msgstr "Russian"
+
+msgid "Kinyarwanda"
+msgstr "Kinyarwanda"
+
+msgid "Sanskrit"
+msgstr "Sanskrit"
+
+msgid "Sardinian"
+msgstr "Sardinian"
+
+msgid "Sindhi"
+msgstr "Sindhi"
+
+msgid "Northern Sami"
+msgstr "Northern Sami"
+
+msgid "Sango"
+msgstr "Sango"
+
+msgid "Serbo-Croatian"
+msgstr "Serbo-Croatian"
+
+msgid "Sinhala"
+msgstr "Sinhala"
+
+msgid "Slovak"
+msgstr "Slovak"
+
+msgid "Slovenian"
+msgstr "Slovenian"
+
+msgid "Samoan"
+msgstr "Samoan"
+
+msgid "Shona"
+msgstr "Shona"
+
+msgid "Somali"
+msgstr "Somali"
+
+msgid "Albanian"
+msgstr "Albanian"
+
+msgid "Serbian"
+msgstr "Serbian"
+
+msgid "Swati"
+msgstr "Swati"
+
+msgid "Southern Sotho"
+msgstr "Southern Sotho"
+
+msgid "Sundanese"
+msgstr "Sundanese"
+
+msgid "Swedish"
+msgstr "Swedish"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Tamil"
+msgstr "Tamil"
+
+msgid "Telugu"
+msgstr "Telugu"
+
+msgid "Tajik"
+msgstr "Tajik"
+
+msgid "Thai"
+msgstr "Thai"
+
+msgid "Tigrinya"
+msgstr "Tigrinya"
+
+msgid "Turkmen"
+msgstr "Turkmen"
+
+msgid "Tagalog"
+msgstr "Tagalog"
+
+msgid "Tswana"
+msgstr "Tswana"
+
+msgid "Tongan"
+msgstr "Tongan"
+
+msgid "Turkish"
+msgstr "Turkish"
+
+msgid "Tsonga"
+msgstr "Tsonga"
+
+msgid "Tatar"
+msgstr "Tatar"
+
+msgid "Twi"
+msgstr "Twi"
+
+msgid "Tahitian"
+msgstr "Tahitian"
+
+msgid "Uyghur"
+msgstr "Uyghur"
+
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+msgid "Urdu"
+msgstr "Urdu"
+
+msgid "Uzbek"
+msgstr "Uzbek"
+
+msgid "Venda"
+msgstr "Venda"
+
+msgid "Vietnamese"
+msgstr "Vietnamese"
+
+msgid "Volapük"
+msgstr "Volapük"
+
+msgid "Walloon"
+msgstr "Walloon"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Xhosa"
+msgstr "Xhosa"
+
+msgid "Yiddish"
+msgstr "Yiddish"
+
+msgid "Yoruba"
+msgstr "Yoruba"
+
+msgid "Zhuang"
+msgstr "Zhuang"
+
+msgid "Chinese"
+msgstr "Chinese"
+
+msgid "Zulu"
+msgstr "Zulu"
+
+#  Translations of country names
+
+msgid "Andorra"
+msgstr "Andorra"
+
+msgid "United Arab Emirates"
+msgstr "United Arab Emirates"
+
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+msgid "Antigua & Barbuda"
+msgstr "Antigua & Barbuda"
+
+msgid "Anguilla"
+msgstr "Anguilla"
+
+msgid "Albania"
+msgstr "Albania"
+
+msgid "Armenia"
+msgstr "Armenia"
+
+msgid "Angola"
+msgstr "Angola"
+
+msgid "Antarctica"
+msgstr "Antarctica"
+
+msgid "Argentina"
+msgstr "Argentina"
+
+msgid "American Samoa"
+msgstr "American Samoa"
+
+msgid "Austria"
+msgstr "Austria"
+
+msgid "Australia"
+msgstr "Australia"
+
+msgid "Aruba"
+msgstr "Aruba"
+
+msgid "Åland Islands"
+msgstr "Åland Islands"
+
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+msgid "Bosnia & Herzegovina"
+msgstr "Bosnia & Herzegovina"
+
+msgid "Barbados"
+msgstr "Barbados"
+
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+msgid "Belgium"
+msgstr "Belgium"
+
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+msgid "Bahrain"
+msgstr "Bahrain"
+
+msgid "Burundi"
+msgstr "Burundi"
+
+msgid "Benin"
+msgstr "Benin"
+
+msgid "St. Barthélemy"
+msgstr "St. Barthélemy"
+
+msgid "Bermuda"
+msgstr "Bermuda"
+
+msgid "Brunei"
+msgstr "Brunei"
+
+msgid "Bolivia"
+msgstr "Bolivia"
+
+msgid "Caribbean Netherlands"
+msgstr "Caribbean Netherlands"
+
+msgid "Brazil"
+msgstr "Brazil"
+
+msgid "Bahamas"
+msgstr "Bahamas"
+
+msgid "Bhutan"
+msgstr "Bhutan"
+
+msgid "Bouvet Island"
+msgstr "Bouvet Island"
+
+msgid "Botswana"
+msgstr "Botswana"
+
+msgid "Belarus"
+msgstr "Belarus"
+
+msgid "Belize"
+msgstr "Belize"
+
+msgid "Canada"
+msgstr "Canada"
+
+msgid "Cocos (Keeling) Islands"
+msgstr "Cocos (Keeling) Islands"
+
+msgid "Congo - Kinshasa"
+msgstr "Congo - Kinshasa"
+
+msgid "Central African Republic"
+msgstr "Central African Republic"
+
+msgid "Congo - Brazzaville"
+msgstr "Congo - Brazzaville"
+
+msgid "Switzerland"
+msgstr "Switzerland"
+
+msgid "Côte d’Ivoire"
+msgstr "Côte d’Ivoire"
+
+msgid "Cook Islands"
+msgstr "Cook Islands"
+
+msgid "Chile"
+msgstr "Chile"
+
+msgid "Cameroon"
+msgstr "Cameroon"
+
+msgid "China"
+msgstr "China"
+
+msgid "Colombia"
+msgstr "Colombia"
+
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+msgid "Cuba"
+msgstr "Cuba"
+
+msgid "Cape Verde"
+msgstr "Cape Verde"
+
+msgid "Curaçao"
+msgstr "Curaçao"
+
+msgid "Christmas Island"
+msgstr "Christmas Island"
+
+msgid "Cyprus"
+msgstr "Cyprus"
+
+msgid "Czechia"
+msgstr "Czechia"
+
+msgid "Germany"
+msgstr "Germany"
+
+msgid "Djibouti"
+msgstr "Djibouti"
+
+msgid "Denmark"
+msgstr "Denmark"
+
+msgid "Dominica"
+msgstr "Dominica"
+
+msgid "Dominican Republic"
+msgstr "Dominican Republic"
+
+msgid "Algeria"
+msgstr "Algeria"
+
+msgid "Ecuador"
+msgstr "Ecuador"
+
+msgid "Estonia"
+msgstr "Estonia"
+
+msgid "Egypt"
+msgstr "Egypt"
+
+msgid "Western Sahara"
+msgstr "Western Sahara"
+
+msgid "Eritrea"
+msgstr "Eritrea"
+
+msgid "Spain"
+msgstr "Spain"
+
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+msgid "European Union"
+msgstr "European Union"
+
+msgid "Finland"
+msgstr "Finland"
+
+msgid "Fiji"
+msgstr "Fiji"
+
+msgid "Falkland Islands"
+msgstr "Falkland Islands"
+
+msgid "Micronesia"
+msgstr "Micronesia"
+
+msgid "Faroe Islands"
+msgstr "Faroe Islands"
+
+msgid "France"
+msgstr "France"
+
+msgid "Gabon"
+msgstr "Gabon"
+
+msgid "United Kingdom"
+msgstr "United Kingdom"
+
+msgid "Grenada"
+msgstr "Grenada"
+
+msgid "Georgia"
+msgstr "Georgia"
+
+msgid "French Guiana"
+msgstr "French Guiana"
+
+msgid "Guernsey"
+msgstr "Guernsey"
+
+msgid "Ghana"
+msgstr "Ghana"
+
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+msgid "Greenland"
+msgstr "Greenland"
+
+msgid "Gambia"
+msgstr "Gambia"
+
+msgid "Guinea"
+msgstr "Guinea"
+
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+msgid "Equatorial Guinea"
+msgstr "Equatorial Guinea"
+
+msgid "Greece"
+msgstr "Greece"
+
+msgid "South Georgia & South Sandwich Islands"
+msgstr "South Georgia & South Sandwich Islands"
+
+msgid "Guatemala"
+msgstr "Guatemala"
+
+msgid "Guam"
+msgstr "Guam"
+
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+msgid "Guyana"
+msgstr "Guyana"
+
+msgid "Hong Kong SAR China"
+msgstr "Hong Kong SAR China"
+
+msgid "Heard & McDonald Islands"
+msgstr "Heard & McDonald Islands"
+
+msgid "Honduras"
+msgstr "Honduras"
+
+msgid "Croatia"
+msgstr "Croatia"
+
+msgid "Haiti"
+msgstr "Haiti"
+
+msgid "Hungary"
+msgstr "Hungary"
+
+msgid "Indonesia"
+msgstr "Indonesia"
+
+msgid "Ireland"
+msgstr "Ireland"
+
+msgid "Israel"
+msgstr "Israel"
+
+msgid "Isle of Man"
+msgstr "Isle of Man"
+
+msgid "India"
+msgstr "India"
+
+msgid "British Indian Ocean Territory"
+msgstr "British Indian Ocean Territory"
+
+msgid "Iraq"
+msgstr "Iraq"
+
+msgid "Iran"
+msgstr "Iran"
+
+msgid "Iceland"
+msgstr "Iceland"
+
+msgid "Italy"
+msgstr "Italy"
+
+msgid "Jersey"
+msgstr "Jersey"
+
+msgid "Jamaica"
+msgstr "Jamaica"
+
+msgid "Jordan"
+msgstr "Jordan"
+
+msgid "Japan"
+msgstr "Japan"
+
+msgid "Kenya"
+msgstr "Kenya"
+
+msgid "Kyrgyzstan"
+msgstr "Kyrgyzstan"
+
+msgid "Cambodia"
+msgstr "Cambodia"
+
+msgid "Kiribati"
+msgstr "Kiribati"
+
+msgid "Comoros"
+msgstr "Comoros"
+
+msgid "St. Kitts & Nevis"
+msgstr "St. Kitts & Nevis"
+
+msgid "North Korea"
+msgstr "North Korea"
+
+msgid "South Korea"
+msgstr "South Korea"
+
+msgid "Kuwait"
+msgstr "Kuwait"
+
+msgid "Cayman Islands"
+msgstr "Cayman Islands"
+
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+msgid "Laos"
+msgstr "Laos"
+
+msgid "Lebanon"
+msgstr "Lebanon"
+
+msgid "St. Lucia"
+msgstr "St. Lucia"
+
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+msgid "Liberia"
+msgstr "Liberia"
+
+msgid "Lesotho"
+msgstr "Lesotho"
+
+msgid "Lithuania"
+msgstr "Lithuania"
+
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+msgid "Latvia"
+msgstr "Latvia"
+
+msgid "Libya"
+msgstr "Libya"
+
+msgid "Morocco"
+msgstr "Morocco"
+
+msgid "Monaco"
+msgstr "Monaco"
+
+msgid "Moldova"
+msgstr "Moldova"
+
+msgid "Montenegro"
+msgstr "Montenegro"
+
+msgid "St. Martin"
+msgstr "St. Martin"
+
+msgid "Madagascar"
+msgstr "Madagascar"
+
+msgid "Marshall Islands"
+msgstr "Marshall Islands"
+
+msgid "North Macedonia"
+msgstr "North Macedonia"
+
+msgid "Mali"
+msgstr "Mali"
+
+msgid "Myanmar (Burma)"
+msgstr "Myanmar (Burma)"
+
+msgid "Mongolia"
+msgstr "Mongolia"
+
+msgid "Macao SAR China"
+msgstr "Macao SAR China"
+
+msgid "Northern Mariana Islands"
+msgstr "Northern Mariana Islands"
+
+msgid "Martinique"
+msgstr "Martinique"
+
+msgid "Mauritania"
+msgstr "Mauritania"
+
+msgid "Montserrat"
+msgstr "Montserrat"
+
+msgid "Malta"
+msgstr "Malta"
+
+msgid "Mauritius"
+msgstr "Mauritius"
+
+msgid "Maldives"
+msgstr "Maldives"
+
+msgid "Malawi"
+msgstr "Malawi"
+
+msgid "Mexico"
+msgstr "Mexico"
+
+msgid "Malaysia"
+msgstr "Malaysia"
+
+msgid "Mozambique"
+msgstr "Mozambique"
+
+msgid "Namibia"
+msgstr "Namibia"
+
+msgid "New Caledonia"
+msgstr "New Caledonia"
+
+msgid "Niger"
+msgstr "Niger"
+
+msgid "Norfolk Island"
+msgstr "Norfolk Island"
+
+msgid "Nigeria"
+msgstr "Nigeria"
+
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+msgid "Netherlands"
+msgstr "Netherlands"
+
+msgid "Norway"
+msgstr "Norway"
+
+msgid "Nepal"
+msgstr "Nepal"
+
+msgid "Nauru"
+msgstr "Nauru"
+
+msgid "Niue"
+msgstr "Niue"
+
+msgid "New Zealand"
+msgstr "New Zealand"
+
+msgid "Oman"
+msgstr "Oman"
+
+msgid "Panama"
+msgstr "Panama"
+
+msgid "Peru"
+msgstr "Peru"
+
+msgid "French Polynesia"
+msgstr "French Polynesia"
+
+msgid "Papua New Guinea"
+msgstr "Papua New Guinea"
+
+msgid "Philippines"
+msgstr "Philippines"
+
+msgid "Pakistan"
+msgstr "Pakistan"
+
+msgid "Poland"
+msgstr "Poland"
+
+msgid "St. Pierre & Miquelon"
+msgstr "St. Pierre & Miquelon"
+
+msgid "Pitcairn Islands"
+msgstr "Pitcairn Islands"
+
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+msgid "Palestinian Territories"
+msgstr "Palestinian Territories"
+
+msgid "Portugal"
+msgstr "Portugal"
+
+msgid "Palau"
+msgstr "Palau"
+
+msgid "Paraguay"
+msgstr "Paraguay"
+
+msgid "Qatar"
+msgstr "Qatar"
+
+msgid "Réunion"
+msgstr "Réunion"
+
+msgid "Romania"
+msgstr "Romania"
+
+msgid "Serbia"
+msgstr "Serbia"
+
+msgid "Russia"
+msgstr "Russia"
+
+msgid "Rwanda"
+msgstr "Rwanda"
+
+msgid "Saudi Arabia"
+msgstr "Saudi Arabia"
+
+msgid "Solomon Islands"
+msgstr "Solomon Islands"
+
+msgid "Seychelles"
+msgstr "Seychelles"
+
+msgid "Sudan"
+msgstr "Sudan"
+
+msgid "Sweden"
+msgstr "Sweden"
+
+msgid "Singapore"
+msgstr "Singapore"
+
+msgid "St. Helena"
+msgstr "St. Helena"
+
+msgid "Slovenia"
+msgstr "Slovenia"
+
+msgid "Svalbard & Jan Mayen"
+msgstr "Svalbard & Jan Mayen"
+
+msgid "Slovakia"
+msgstr "Slovakia"
+
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+msgid "San Marino"
+msgstr "San Marino"
+
+msgid "Senegal"
+msgstr "Senegal"
+
+msgid "Somalia"
+msgstr "Somalia"
+
+msgid "Suriname"
+msgstr "Suriname"
+
+msgid "South Sudan"
+msgstr "South Sudan"
+
+msgid "São Tomé & Príncipe"
+msgstr "São Tomé & Príncipe"
+
+msgid "El Salvador"
+msgstr "El Salvador"
+
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+msgid "Syria"
+msgstr "Syria"
+
+msgid "Eswatini"
+msgstr "Eswatini"
+
+msgid "Turks & Caicos Islands"
+msgstr "Turks & Caicos Islands"
+
+msgid "Chad"
+msgstr "Chad"
+
+msgid "French Southern Territories"
+msgstr "French Southern Territories"
+
+msgid "Togo"
+msgstr "Togo"
+
+msgid "Thailand"
+msgstr "Thailand"
+
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+msgid "Tokelau"
+msgstr "Tokelau"
+
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+msgid "Tunisia"
+msgstr "Tunisia"
+
+msgid "Tonga"
+msgstr "Tonga"
+
+msgid "Turkey"
+msgstr "Turkey"
+
+msgid "Trinidad & Tobago"
+msgstr "Trinidad & Tobago"
+
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+msgid "Taiwan"
+msgstr "Taiwan"
+
+msgid "Tanzania"
+msgstr "Tanzania"
+
+msgid "Ukraine"
+msgstr "Ukraine"
+
+msgid "Uganda"
+msgstr "Uganda"
+
+msgid "U.S. Outlying Islands"
+msgstr "U.S. Outlying Islands"
+
+msgid "United States"
+msgstr "United States"
+
+msgid "Uruguay"
+msgstr "Uruguay"
+
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+msgid "Vatican City"
+msgstr "Vatican City"
+
+msgid "St. Vincent & Grenadines"
+msgstr "St. Vincent & Grenadines"
+
+msgid "Venezuela"
+msgstr "Venezuela"
+
+msgid "British Virgin Islands"
+msgstr "British Virgin Islands"
+
+msgid "U.S. Virgin Islands"
+msgstr "U.S. Virgin Islands"
+
+msgid "Vietnam"
+msgstr "Vietnam"
+
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+msgid "Wallis & Futuna"
+msgstr "Wallis & Futuna"
+
+msgid "Samoa"
+msgstr "Samoa"
+
+msgid "Yemen"
+msgstr "Yemen"
+
+msgid "Mayotte"
+msgstr "Mayotte"
+
+msgid "South Africa"
+msgstr "South Africa"
+
+msgid "Zambia"
+msgstr "Zambia"
+
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+msgid "Unknown Region"
+msgstr "Unknown Region"
+
+#  Translations of currency names
+
+msgid "Andorran Peseta"
+msgstr "Andorran Peseta"
+
+msgid "United Arab Emirates Dirham"
+msgstr "United Arab Emirates Dirham"
+
+msgid "Afghan Afghani"
+msgstr "Afghan Afghani"
+
+msgid "Albanian Lek"
+msgstr "Albanian Lek"
+
+msgid "Armenian Dram"
+msgstr "Armenian Dram"
+
+msgid "Netherlands Antillean Guilder"
+msgstr "Netherlands Antillean Guilder"
+
+msgid "Angolan Kwanza"
+msgstr "Angolan Kwanza"
+
+msgid "Argentine Peso"
+msgstr "Argentine Peso"
+
+msgid "Australian Dollar"
+msgstr "Australian Dollar"
+
+msgid "Aruban Florin"
+msgstr "Aruban Florin"
+
+msgid "Azerbaijani Manat"
+msgstr "Azerbaijani Manat"
+
+msgid "Bosnia-Herzegovina Convertible Mark"
+msgstr "Bosnia-Herzegovina Convertible Mark"
+
+msgid "Barbadian Dollar"
+msgstr "Barbadian Dollar"
+
+msgid "Bangladeshi Taka"
+msgstr "Bangladeshi Taka"
+
+msgid "Bulgarian Lev"
+msgstr "Bulgarian Lev"
+
+msgid "Bahraini Dinar"
+msgstr "Bahraini Dinar"
+
+msgid "Burundian Franc"
+msgstr "Burundian Franc"
+
+msgid "Bermudan Dollar"
+msgstr "Bermudan Dollar"
+
+msgid "Brunei Dollar"
+msgstr "Brunei Dollar"
+
+msgid "Bolivian Boliviano"
+msgstr "Bolivian Boliviano"
+
+msgid "Brazilian Real"
+msgstr "Brazilian Real"
+
+msgid "Bahamian Dollar"
+msgstr "Bahamian Dollar"
+
+msgid "Bhutanese Ngultrum"
+msgstr "Bhutanese Ngultrum"
+
+msgid "Botswanan Pula"
+msgstr "Botswanan Pula"
+
+msgid "Belarusian Ruble (2000–2016)"
+msgstr "Belarusian Ruble (2000–2016)"
+
+msgid "Belize Dollar"
+msgstr "Belize Dollar"
+
+msgid "Canadian Dollar"
+msgstr "Canadian Dollar"
+
+msgid "Congolese Franc"
+msgstr "Congolese Franc"
+
+msgid "Swiss Franc"
+msgstr "Swiss Franc"
+
+msgid "Chilean Peso"
+msgstr "Chilean Peso"
+
+msgid "Chinese Yuan (offshore)"
+msgstr "Chinese Yuan (offshore)"
+
+msgid "Chinese Yuan"
+msgstr "Chinese Yuan"
+
+msgid "Colombian Peso"
+msgstr "Colombian Peso"
+
+msgid "Costa Rican Colón"
+msgstr "Costa Rican Colón"
+
+msgid "Cuban Peso"
+msgstr "Cuban Peso"
+
+msgid "Cape Verdean Escudo"
+msgstr "Cape Verdean Escudo"
+
+msgid "Czech Koruna"
+msgstr "Czech Koruna"
+
+msgid "Djiboutian Franc"
+msgstr "Djiboutian Franc"
+
+msgid "Danish Krone"
+msgstr "Danish Krone"
+
+msgid "Dominican Peso"
+msgstr "Dominican Peso"
+
+msgid "Algerian Dinar"
+msgstr "Algerian Dinar"
+
+msgid "Ecuadorian Sucre"
+msgstr "Ecuadorian Sucre"
+
+msgid "Egyptian Pound"
+msgstr "Egyptian Pound"
+
+msgid "Eritrean Nakfa"
+msgstr "Eritrean Nakfa"
+
+msgid "Ethiopian Birr"
+msgstr "Ethiopian Birr"
+
+msgid "Euro"
+msgstr "Euro"
+
+msgid "Fijian Dollar"
+msgstr "Fijian Dollar"
+
+msgid "Falkland Islands Pound"
+msgstr "Falkland Islands Pound"
+
+msgid "British Pound"
+msgstr "British Pound"
+
+msgid "Georgian Lari"
+msgstr "Georgian Lari"
+
+msgid "Ghanaian Cedi"
+msgstr "Ghanaian Cedi"
+
+msgid "Gibraltar Pound"
+msgstr "Gibraltar Pound"
+
+msgid "Gambian Dalasi"
+msgstr "Gambian Dalasi"
+
+msgid "Guinean Franc"
+msgstr "Guinean Franc"
+
+msgid "Guatemalan Quetzal"
+msgstr "Guatemalan Quetzal"
+
+msgid "Guyanaese Dollar"
+msgstr "Guyanaese Dollar"
+
+msgid "Hong Kong Dollar"
+msgstr "Hong Kong Dollar"
+
+msgid "Honduran Lempira"
+msgstr "Honduran Lempira"
+
+msgid "Croatian Kuna"
+msgstr "Croatian Kuna"
+
+msgid "Haitian Gourde"
+msgstr "Haitian Gourde"
+
+msgid "Hungarian Forint"
+msgstr "Hungarian Forint"
+
+msgid "Indonesian Rupiah"
+msgstr "Indonesian Rupiah"
+
+msgid "Israeli New Shekel"
+msgstr "Israeli New Shekel"
+
+msgid "Indian Rupee"
+msgstr "Indian Rupee"
+
+msgid "Iraqi Dinar"
+msgstr "Iraqi Dinar"
+
+msgid "Iranian Rial"
+msgstr "Iranian Rial"
+
+msgid "Icelandic Króna"
+msgstr "Icelandic Króna"
+
+msgid "Jamaican Dollar"
+msgstr "Jamaican Dollar"
+
+msgid "Jordanian Dinar"
+msgstr "Jordanian Dinar"
+
+msgid "Japanese Yen"
+msgstr "Japanese Yen"
+
+msgid "Kenyan Shilling"
+msgstr "Kenyan Shilling"
+
+msgid "Kyrgystani Som"
+msgstr "Kyrgystani Som"
+
+msgid "Cambodian Riel"
+msgstr "Cambodian Riel"
+
+msgid "Comorian Franc"
+msgstr "Comorian Franc"
+
+msgid "North Korean Won"
+msgstr "North Korean Won"
+
+msgid "South Korean Won"
+msgstr "South Korean Won"
+
+msgid "Kuwaiti Dinar"
+msgstr "Kuwaiti Dinar"
+
+msgid "Cayman Islands Dollar"
+msgstr "Cayman Islands Dollar"
+
+msgid "Kazakhstani Tenge"
+msgstr "Kazakhstani Tenge"
+
+msgid "Laotian Kip"
+msgstr "Laotian Kip"
+
+msgid "Lebanese Pound"
+msgstr "Lebanese Pound"
+
+msgid "Sri Lankan Rupee"
+msgstr "Sri Lankan Rupee"
+
+msgid "Liberian Dollar"
+msgstr "Liberian Dollar"
+
+msgid "Lesotho Loti"
+msgstr "Lesotho Loti"
+
+msgid "Lithuanian Litas"
+msgstr "Lithuanian Litas"
+
+msgid "Latvian Lats"
+msgstr "Latvian Lats"
+
+msgid "Libyan Dinar"
+msgstr "Libyan Dinar"
+
+msgid "Moroccan Dirham"
+msgstr "Moroccan Dirham"
+
+msgid "Moldovan Leu"
+msgstr "Moldovan Leu"
+
+msgid "Malagasy Ariary"
+msgstr "Malagasy Ariary"
+
+msgid "Macedonian Denar"
+msgstr "Macedonian Denar"
+
+msgid "Myanmar Kyat"
+msgstr "Myanmar Kyat"
+
+msgid "Mongolian Tugrik"
+msgstr "Mongolian Tugrik"
+
+msgid "Macanese Pataca"
+msgstr "Macanese Pataca"
+
+msgid "Mauritanian Ouguiya (1973–2017)"
+msgstr "Mauritanian Ouguiya (1973–2017)"
+
+msgid "Mauritian Rupee"
+msgstr "Mauritian Rupee"
+
+msgid "Maldivian Rufiyaa"
+msgstr "Maldivian Rufiyaa"
+
+msgid "Malawian Kwacha"
+msgstr "Malawian Kwacha"
+
+msgid "Mexican Peso"
+msgstr "Mexican Peso"
+
+msgid "Malaysian Ringgit"
+msgstr "Malaysian Ringgit"
+
+msgid "Mozambican Metical"
+msgstr "Mozambican Metical"
+
+msgid "Namibian Dollar"
+msgstr "Namibian Dollar"
+
+msgid "Nigerian Naira"
+msgstr "Nigerian Naira"
+
+msgid "Nicaraguan Córdoba"
+msgstr "Nicaraguan Córdoba"
+
+msgid "Norwegian Krone"
+msgstr "Norwegian Krone"
+
+msgid "Nepalese Rupee"
+msgstr "Nepalese Rupee"
+
+msgid "New Zealand Dollar"
+msgstr "New Zealand Dollar"
+
+msgid "Omani Rial"
+msgstr "Omani Rial"
+
+msgid "Panamanian Balboa"
+msgstr "Panamanian Balboa"
+
+msgid "Peruvian Sol"
+msgstr "Peruvian Sol"
+
+msgid "Papua New Guinean Kina"
+msgstr "Papua New Guinean Kina"
+
+msgid "Philippine Piso"
+msgstr "Philippine Piso"
+
+msgid "Pakistani Rupee"
+msgstr "Pakistani Rupee"
+
+msgid "Polish Zloty"
+msgstr "Polish Zloty"
+
+msgid "Paraguayan Guarani"
+msgstr "Paraguayan Guarani"
+
+msgid "Qatari Rial"
+msgstr "Qatari Rial"
+
+msgid "Romanian Leu"
+msgstr "Romanian Leu"
+
+msgid "Serbian Dinar"
+msgstr "Serbian Dinar"
+
+msgid "Russian Ruble"
+msgstr "Russian Ruble"
+
+msgid "Rwandan Franc"
+msgstr "Rwandan Franc"
+
+msgid "Saudi Riyal"
+msgstr "Saudi Riyal"
+
+msgid "Solomon Islands Dollar"
+msgstr "Solomon Islands Dollar"
+
+msgid "Seychellois Rupee"
+msgstr "Seychellois Rupee"
+
+msgid "Sudanese Dinar (1992–2007)"
+msgstr "Sudanese Dinar (1992–2007)"
+
+msgid "Sudanese Pound"
+msgstr "Sudanese Pound"
+
+msgid "Swedish Krona"
+msgstr "Swedish Krona"
+
+msgid "Singapore Dollar"
+msgstr "Singapore Dollar"
+
+msgid "St. Helena Pound"
+msgstr "St. Helena Pound"
+
+msgid "Sierra Leonean Leone"
+msgstr "Sierra Leonean Leone"
+
+msgid "Somali Shilling"
+msgstr "Somali Shilling"
+
+msgid "Surinamese Dollar"
+msgstr "Surinamese Dollar"
+
+msgid "São Tomé & Príncipe Dobra (1977–2017)"
+msgstr "São Tomé & Príncipe Dobra (1977–2017)"
+
+msgid "Salvadoran Colón"
+msgstr "Salvadoran Colón"
+
+msgid "Syrian Pound"
+msgstr "Syrian Pound"
+
+msgid "Swazi Lilangeni"
+msgstr "Swazi Lilangeni"
+
+msgid "Thai Baht"
+msgstr "Thai Baht"
+
+msgid "Tajikistani Somoni"
+msgstr "Tajikistani Somoni"
+
+msgid "Turkmenistani Manat"
+msgstr "Turkmenistani Manat"
+
+msgid "Tunisian Dinar"
+msgstr "Tunisian Dinar"
+
+msgid "Tongan Paʻanga"
+msgstr "Tongan Paʻanga"
+
+msgid "Turkish Lira (1922–2005)"
+msgstr "Turkish Lira (1922–2005)"
+
+msgid "Turkish Lira"
+msgstr "Turkish Lira"
+
+msgid "Trinidad & Tobago Dollar"
+msgstr "Trinidad & Tobago Dollar"
+
+msgid "New Taiwan Dollar"
+msgstr "New Taiwan Dollar"
+
+msgid "Tanzanian Shilling"
+msgstr "Tanzanian Shilling"
+
+msgid "Ukrainian Hryvnia"
+msgstr "Ukrainian Hryvnia"
+
+msgid "Ugandan Shilling"
+msgstr "Ugandan Shilling"
+
+msgid "US Dollar"
+msgstr "US Dollar"
+
+msgid "Uruguayan Peso"
+msgstr "Uruguayan Peso"
+
+msgid "Uzbekistani Som"
+msgstr "Uzbekistani Som"
+
+msgid "Venezuelan Bolívar (2008–2018)"
+msgstr "Venezuelan Bolívar (2008–2018)"
+
+msgid "Vietnamese Dong"
+msgstr "Vietnamese Dong"
+
+msgid "Vanuatu Vatu"
+msgstr "Vanuatu Vatu"
+
+msgid "Samoan Tala"
+msgstr "Samoan Tala"
+
+msgid "Central African CFA Franc"
+msgstr "Central African CFA Franc"
+
+msgid "East Caribbean Dollar"
+msgstr "East Caribbean Dollar"
+
+msgid "West African CFA Franc"
+msgstr "West African CFA Franc"
+
+msgid "CFP Franc"
+msgstr "CFP Franc"
+
+msgid "Yemeni Rial"
+msgstr "Yemeni Rial"
+
+msgid "South African Rand"
+msgstr "South African Rand"
+
+msgid "Zambian Kwacha (1968–2012)"
+msgstr "Zambian Kwacha (1968–2012)"
+
+msgid "Zimbabwean Dollar (2009)"
+msgstr "Zimbabwean Dollar (2009)"
+
