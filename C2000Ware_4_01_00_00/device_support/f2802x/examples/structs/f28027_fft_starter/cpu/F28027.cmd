@@ -109,13 +109,14 @@ PAGE 0:    /* Program Memory */
 //   PRAML0      : origin = 0x008000, length = 0x001000     /* on-chip RAM block L0 */
    PRAMM1     : origin = 0x000600, length = 0x000200     /* on-chip RAM block M1 */
    OTP         : origin = 0x3D7800, length = 0x000400     /* on-chip OTP */
-   FLASHD      : origin = 0x3F0000, length = 0x002000     /* on-chip FLASH */
+   FLASHA      : origin = 0x3F0000, length = 0x002000     /* on-chip FLASH */
+   FLASHD      : origin = 0x3F6000, length = 0x001F80     /* on-chip FLASH */
    FLASHC      : origin = 0x3F2000, length = 0x002000     /* on-chip FLASH */
    FLASHB      : origin = 0x3F4000, length = 0x002000     /* on-chip FLASH */
 
-   CSM_RSVD    : origin = 0x3F7F80, length = 0x000076     /* Part of FLASHA.  Program with all 0x0000 when CSM is in use. */
-   BEGIN       : origin = 0x3F7FF6, length = 0x000002     /* Part of FLASHA.  Used for "boot to Flash" bootloader mode. */
-   CSM_PWL_P0  : origin = 0x3F7FF8, length = 0x000008     /* Part of FLASHA.  CSM password locations in FLASHA */
+   CSM_RSVD    : origin = 0x3F7F80, length = 0x000076     /* Part of FLASHD.  Program with all 0x0000 when CSM is in use. */
+   BEGIN       : origin = 0x3F7FF6, length = 0x000002     /* Part of FLASHD.  Used for "boot to Flash" bootloader mode. */
+   CSM_PWL_P0  : origin = 0x3F7FF8, length = 0x000008     /* Part of FLASHD.  CSM password locations in FLASHD */
 
    IQTABLES    : origin = 0x3FE000, length = 0x000B50     /* IQ Math Tables in Boot ROM */
    IQTABLES2   : origin = 0x3FEB50, length = 0x00008C     /* IQ Math Tables in Boot ROM */
@@ -128,7 +129,7 @@ PAGE 0:    /* Program Memory */
 PAGE 1 :   /* Data Memory */
            /* Memory (RAM/FLASH/OTP) blocks can be moved to PAGE0 for program allocation */
            /* Registers remain on PAGE1                                                  */
-   FLASHA      : origin = 0x3F6000, length = 0x001F80     /* on-chip FLASH */
+//   FLASHD      : origin = 0x3F6000, length = 0x001F80     /* on-chip FLASH */
    BOOT_RSVD   : origin = 0x000000, length = 0x000050     /* Part of M0, BOOT rom will use this for stack */
    RAMM0       : origin = 0x000050, length = 0x0003B0     /* on-chip RAM block M0 */
    DRAMM1       : origin = 0x000400, length = 0x000200     /* on-chip RAM block M1 */
@@ -148,11 +149,11 @@ SECTIONS
 {
 
    /* Allocate program areas: */
-   .cinit              : >  FLASHB | FLASHC | FLASHD,       PAGE = 0
-   .pinit              : >  FLASHB | FLASHC | FLASHD,      PAGE = 0
-   .text               : >>  FLASHB | FLASHC | FLASHD,       PAGE = 0
+   .cinit              : > FLASHA | FLASHB | FLASHC | FLASHD,       PAGE = 0
+   .pinit              : > FLASHA | FLASHB | FLASHC | FLASHD,      PAGE = 0
+   .text               : >> FLASHA | FLASHB | FLASHC | FLASHD,       PAGE = 0
    codestart           : > BEGIN        PAGE = 0
-   ramfuncs            : LOAD =  FLASHB | FLASHC | FLASHD,
+   ramfuncs            : LOAD = FLASHA | FLASHB | FLASHC | FLASHD,
                          RUN = PRAMM1,
                          LOAD_START(_RamfuncsLoadStart),
                          LOAD_SIZE(_RamfuncsLoadSize),
@@ -171,11 +172,11 @@ SECTIONS
 
    /* Initalized sections go in Flash */
    /* For SDFlash to program these, they must be allocated to page 0 */
-   .econst             : >  FLASHB | FLASHC | FLASHD,       PAGE = 0
-   .switch             : >  FLASHB | FLASHC | FLASHD,       PAGE = 0
+   .econst             : >  FLASHA | FLASHB | FLASHC | FLASHD,       PAGE = 0
+   .switch             : >  FLASHA | FLASHB | FLASHC | FLASHD,      PAGE = 0
 
    /* Allocate IQ math areas: */
-   IQmath              : >  FLASHB | FLASHC | FLASHD,       PAGE = 0            /* Math Code */
+   IQmath              : > FLASHA | FLASHB | FLASHC | FLASHD,       PAGE = 0            /* Math Code */
    IQmathTables        : > IQTABLES,    PAGE = 0, TYPE = NOLOAD
 
    /* Uncomment the section below if calling the IQNexp() or IQexp()
@@ -226,7 +227,7 @@ SECTIONS
 	FpuRegsFile : >> DRAML0
 
 
-   FFTtf               : > FLASHA, PAGE = 1
+   FFTtf               : > FLASHA | FLASHB | FLASHC | FLASHD, align(8), PAGE = 0
    /*  FFT_ALIGN must be defined in the project properties under
     C2000 Linker -> Advanced Options -> Command File Preprocessing -> --define
     or at the top of the linker command file
