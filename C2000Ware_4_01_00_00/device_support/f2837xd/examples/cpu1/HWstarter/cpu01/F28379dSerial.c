@@ -692,35 +692,5 @@ uint16_t serial_printf(serialSCIA_t *s, char *fmt, ...)
     return serial_sendSCIA(s,serial_printf_bufSCIA,strlen(serial_printf_bufSCIA));
 }
 
-//For Text LCD
-char UART_printf_buffer[BUF_SIZESCIB];
-void UART_vprintfLine(unsigned char line, char *format, va_list ap)
-{
-   char sendmsg[24];
 
-   int i;
-
-   vsprintf(UART_printf_buffer,format,ap);
-
-   // Add header information and pad end of transfer with spaces to clear display
-   sendmsg[0] = 0xFE;
-   sendmsg[1] = 'G';
-   sendmsg[2] = 1;
-   sendmsg[3] = line;
-   for (i=4;i<24;i++) {
-       if (i >= strlen(UART_printf_buffer)+4) {
-           sendmsg[i] = ' ';
-       } else {
-           sendmsg[i] = UART_printf_buffer[i-4];
-       }
-   }
-   serial_sendSCIB(&SerialB,sendmsg,24);
-}
-
-void UART_printfLine(unsigned char line, char *format, ...)
-{
-   va_list ap;
-   va_start(ap, format);
-   UART_vprintfLine(line,format,ap);
-}
 

@@ -15,6 +15,7 @@
 #include "driverlib.h"
 #include "device.h"
 #include "F28379dSerial.h"
+#include "LEDPatterns.h"
 #include "song.h"
 #include "dsp.h"
 #include "fpu32/fpu_rfft.h"
@@ -37,6 +38,7 @@ uint32_t numTimer0calls = 0;
 uint32_t numSWIcalls = 0;
 extern uint32_t numRXA;
 uint16_t UARTPrint = 0;
+uint16_t LEDdisplaynum = 0;
 
 
 void main(void)
@@ -82,56 +84,90 @@ void main(void)
     GPIO_SetupPinOptions(111, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPDCLEAR.bit.GPIO111 = 1;
 
-	// LS7366#1 CS
+	// LED6
     GPIO_SetupPinMux(130, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(130, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPECLEAR.bit.GPIO130 = 1;
 
-	// LS7366#2 CS	
+	// LED7	
     GPIO_SetupPinMux(131, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(131, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPECLEAR.bit.GPIO131 = 1;
 
-	// LS7366#3 CS
+	// LED8
     GPIO_SetupPinMux(25, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(25, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPACLEAR.bit.GPIO25 = 1;
 
-	// LS7366#4 CS
+	// LED9
     GPIO_SetupPinMux(26, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(26, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPACLEAR.bit.GPIO26 = 1;
 
-	// WIZNET RST
+	// LED10
     GPIO_SetupPinMux(27, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(27, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPACLEAR.bit.GPIO27 = 1;
 
-	//PushButton 1
+	// LED11	
+    GPIO_SetupPinMux(60, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(60, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPBCLEAR.bit.GPIO60 = 1;
+
+	// LED12	
+    GPIO_SetupPinMux(61, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(61, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPBCLEAR.bit.GPIO61 = 1;
+
+	// LED13
     GPIO_SetupPinMux(157, GPIO_MUX_CPU1, 0);
-    GPIO_SetupPinOptions(157, GPIO_INPUT, GPIO_PULLUP);
+    GPIO_SetupPinOptions(157, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPECLEAR.bit.GPIO157 = 1;
 
-    //PushButton 2
+	// LED14
     GPIO_SetupPinMux(158, GPIO_MUX_CPU1, 0);
-    GPIO_SetupPinOptions(158, GPIO_INPUT, GPIO_PULLUP);
-
-    //PushButton 3
+    GPIO_SetupPinOptions(158, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPECLEAR.bit.GPIO158 = 1;
+	
+	// LED15
     GPIO_SetupPinMux(159, GPIO_MUX_CPU1, 0);
-    GPIO_SetupPinOptions(159, GPIO_INPUT, GPIO_PULLUP);
+    GPIO_SetupPinOptions(159, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPECLEAR.bit.GPIO159 = 1;
 
-    //PushButton 4
+	// LED16
     GPIO_SetupPinMux(160, GPIO_MUX_CPU1, 0);
-    GPIO_SetupPinOptions(160, GPIO_INPUT, GPIO_PULLUP);
+    GPIO_SetupPinOptions(160, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPFCLEAR.bit.GPIO160 = 1;
+
+    //WIZNET Reset
+    GPIO_SetupPinMux(0, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(0, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPASET.bit.GPIO0 = 1;
+
+    //ESP8266 Reset
+    GPIO_SetupPinMux(1, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(1, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPASET.bit.GPIO1 = 1;
 
 	//SPIRAM  CS  Chip Select
     GPIO_SetupPinMux(19, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(19, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPASET.bit.GPIO19 = 1;
 
-    //F28027 CS
+    //DRV8874 #1 DIR  Direction
     GPIO_SetupPinMux(29, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(29, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPASET.bit.GPIO29 = 1;
+
+    //DRV8874 #2 DIR  Direction
+    GPIO_SetupPinMux(32, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(32, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPBSET.bit.GPIO32 = 1;
+
+    //DAN28027  CS  Chip Select
+    GPIO_SetupPinMux(9, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(9, GPIO_OUTPUT, GPIO_PUSHPULL);
+    GpioDataRegs.GPASET.bit.GPIO9 = 1;
 	
     //MPU9250  CS  Chip Select
     GPIO_SetupPinMux(66, GPIO_MUX_CPU1, 0);
@@ -142,6 +178,26 @@ void main(void)
     GPIO_SetupPinMux(125, GPIO_MUX_CPU1, 0);
     GPIO_SetupPinOptions(125, GPIO_OUTPUT, GPIO_PUSHPULL);
     GpioDataRegs.GPDSET.bit.GPIO125 = 1;
+	
+    //PushButton 1
+    GPIO_SetupPinMux(4, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(4, GPIO_INPUT, GPIO_PULLUP);
+
+    //PushButton 2
+    GPIO_SetupPinMux(5, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(5, GPIO_INPUT, GPIO_PULLUP);
+
+    //PushButton 3
+    GPIO_SetupPinMux(6, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(6, GPIO_INPUT, GPIO_PULLUP);
+
+    //PushButton 4
+    GPIO_SetupPinMux(7, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(7, GPIO_INPUT, GPIO_PULLUP);
+	
+	//Joy Stick Pushbutton
+    GPIO_SetupPinMux(8, GPIO_MUX_CPU1, 0);
+    GPIO_SetupPinOptions(8, GPIO_INPUT, GPIO_PULLUP);
 
     // Clear all interrupts and initialize PIE vector table:
     // Disable CPU interrupts
@@ -172,11 +228,11 @@ void main(void)
     PieVectTable.TIMER1_INT = &cpu_timer1_isr;
     PieVectTable.TIMER2_INT = &cpu_timer2_isr;
     PieVectTable.SCIA_RX_INT = &RXAINT_recv_ready;
-    PieVectTable.SCIB_RX_INT = &RXBINT_recv_ready;
+	PieVectTable.SCIB_RX_INT = &RXBINT_recv_ready;
     PieVectTable.SCIC_RX_INT = &RXCINT_recv_ready;
     PieVectTable.SCID_RX_INT = &RXDINT_recv_ready;
     PieVectTable.SCIA_TX_INT = &TXAINT_data_sent;
-    PieVectTable.SCIB_TX_INT = &TXBINT_data_sent;
+	PieVectTable.SCIB_TX_INT = &TXBINT_data_sent;
     PieVectTable.SCIC_TX_INT = &TXCINT_data_sent;
     PieVectTable.SCID_TX_INT = &TXDINT_data_sent;
 
@@ -188,7 +244,7 @@ void main(void)
     // found in F2837xD_CpuTimers.c
     InitCpuTimers();
 
-    // Configure CPU-Timer 0, 1, and 2 to interrupt every second:
+    // Configure CPU-Timer 0, 1, and 2 to interrupt every given period:
     // 200MHz CPU Freq,                       Period (in uSeconds)
     ConfigCpuTimer(&CpuTimer0, LAUNCHPAD_CPU_FREQUENCY, 10000);
     ConfigCpuTimer(&CpuTimer1, LAUNCHPAD_CPU_FREQUENCY, 20000);
@@ -200,9 +256,10 @@ void main(void)
     CpuTimer2Regs.TCR.all = 0x4000;
 
     init_serialSCIA(&SerialA,115200);
-    init_serialSCIB(&SerialB,19200);
-//    init_serialSCIC(&SerialC,115200);
-//    init_serialSCID(&SerialD,115200);
+    //    init_serialSCIB(&SerialB,115200);
+    //    init_serialSCIC(&SerialC,115200);
+    //    init_serialSCID(&SerialD,115200);
+
 
     // Enable CPU int1 which is connected to CPU-Timer 0, CPU int13
     // which is connected to CPU-Timer 1, and CPU int 14, which is connected
@@ -228,9 +285,7 @@ void main(void)
     while(1)
     {
         if (UARTPrint == 1 ) {
-			serial_printf(&SerialA,"Num Timer2:%ld Num SerialRX: %ld\r\n",CpuTimer2.InterruptCount,numRXA);
-            UART_printfLine(1,"Timer2 Calls %ld",CpuTimer2.InterruptCount);
-            UART_printfLine(2,"Num SerialRX %ld",numRXA);
+				serial_printf(&SerialA,"Num Timer2:%ld Num SerialRX: %ld\r\n",CpuTimer2.InterruptCount,numRXA);
             UARTPrint = 0;
         }
     }
@@ -268,11 +323,16 @@ __interrupt void cpu_timer0_isr(void)
 //        PieCtrlRegs.PIEIFR12.bit.INTx9 = 1;  // Manually cause the interrupt for the SWI
 //    }
 
-    if ((numTimer0calls%5) == 0) {
-		// Blink LaunchPad Red LED
-		GpioDataRegs.GPBTOGGLE.bit.GPIO34 = 1;
+    if ((numTimer0calls%250) == 0) {
+        displayLEDletter(LEDdisplaynum);
+        LEDdisplaynum++;
+        if (LEDdisplaynum == 0xFFFF) {  // prevent roll over exception
+            LEDdisplaynum = 0;
+        }
     }
 
+	// Blink LaunchPad Red LED
+    GpioDataRegs.GPBTOGGLE.bit.GPIO34 = 1;
 
     // Acknowledge this interrupt to receive more interrupts from group 1
     PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
@@ -281,20 +341,22 @@ __interrupt void cpu_timer0_isr(void)
 // cpu_timer1_isr - CPU Timer1 ISR
 __interrupt void cpu_timer1_isr(void)
 {
-		
+	
+	
     CpuTimer1.InterruptCount++;
 }
 
 // cpu_timer2_isr CPU Timer2 ISR
 __interrupt void cpu_timer2_isr(void)
 {
+	
+	
 	// Blink LaunchPad Blue LED
     GpioDataRegs.GPATOGGLE.bit.GPIO31 = 1;
 
     CpuTimer2.InterruptCount++;
 	
-	if ((CpuTimer2.InterruptCount % 10) == 0) {
+	if ((CpuTimer2.InterruptCount % 50) == 0) {
 		UARTPrint = 1;
 	}
 }
-

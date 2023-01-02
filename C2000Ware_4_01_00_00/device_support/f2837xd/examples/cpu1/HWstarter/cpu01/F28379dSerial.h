@@ -43,10 +43,6 @@ void uninit_serialSCIA(serialSCIA_t *s);
 uint16_t serial_sendSCIA(serialSCIA_t *s, char *data, Uint16 len);
 uint16_t serial_printf(serialSCIA_t *s, char *fmt, ...);
 
-// For Text LCD
-void UART_printfLine(unsigned char line, char *format, ...);
-void UART_vprintfLine(unsigned char line, char *format, va_list ap);
-
 uint16_t init_serialSCIB(serialSCIB_t *s, Uint32 baud);
 void uninit_serialSCIB(serialSCIB_t *s);
 uint16_t serial_sendSCIB(serialSCIB_t *s, char *data, Uint16 len);
