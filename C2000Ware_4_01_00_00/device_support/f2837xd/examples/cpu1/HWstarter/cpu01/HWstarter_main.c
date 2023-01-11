@@ -1,7 +1,7 @@
 //#############################################################################
-// FILE:   LABstarter_main.c
+// FILE:   HWstarter_main.c
 //
-// TITLE:  Lab Starter
+// TITLE:  HW Starter
 //#############################################################################
 
 // Included Files
@@ -228,11 +228,11 @@ void main(void)
     PieVectTable.TIMER1_INT = &cpu_timer1_isr;
     PieVectTable.TIMER2_INT = &cpu_timer2_isr;
     PieVectTable.SCIA_RX_INT = &RXAINT_recv_ready;
-	PieVectTable.SCIB_RX_INT = &RXBINT_recv_ready;
+    PieVectTable.SCIB_RX_INT = &RXBINT_recv_ready;
     PieVectTable.SCIC_RX_INT = &RXCINT_recv_ready;
     PieVectTable.SCID_RX_INT = &RXDINT_recv_ready;
     PieVectTable.SCIA_TX_INT = &TXAINT_data_sent;
-	PieVectTable.SCIB_TX_INT = &TXBINT_data_sent;
+    PieVectTable.SCIB_TX_INT = &TXBINT_data_sent;
     PieVectTable.SCIC_TX_INT = &TXCINT_data_sent;
     PieVectTable.SCID_TX_INT = &TXDINT_data_sent;
 
