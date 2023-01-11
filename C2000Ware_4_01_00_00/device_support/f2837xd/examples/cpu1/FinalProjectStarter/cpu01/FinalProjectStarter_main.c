@@ -1,7 +1,7 @@
 //#############################################################################
-// FILE:   lab8starter_main.c
+// FILE:   FinalProjectStarter_main.c
 //
-// TITLE:  Lab8 Starter
+// TITLE:  Final Project Starter
 //#############################################################################
 
 // Included Files

@@ -1,7 +1,7 @@
 //#############################################################################
-// FILE:   lab6starter_main.c
+// FILE:   LADAR_PICOMstarter_main.c
 //
-// TITLE:  Lab6 Starter
+// TITLE:  LADAR PICOM Starter
 //#############################################################################
 
 // Included Files

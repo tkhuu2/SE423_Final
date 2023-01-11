@@ -1,7 +1,7 @@
 //#############################################################################
-// FILE:   lab8starter_main.c
+// FILE:   AstarProjectStarter_main.c
 //
-// TITLE:  Lab8 Starter
+// TITLE:  Astar Starter
 //#############################################################################
 
 // Included Files

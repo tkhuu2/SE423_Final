@@ -41,6 +41,7 @@
     <file action="copy" path="../F28379dCAN.h" targetDirectory="" />
     <file action="copy" path="../F28379dCAN.c" targetDirectory="" />		
 	<file action="copy" path="../song.h" targetDirectory="" />
+	<file action="copy" path="../sen36005_CANUsersGuide_R01.pdf" targetDirectory="" />	
     <file action="copy" path="../.gitignore" targetDirectory="" />	
   </project>
 </projectSpec>
