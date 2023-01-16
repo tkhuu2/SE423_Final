@@ -65,7 +65,7 @@ float LADARtemp_y = 0;
 extern datapts ladar_data[228];
 
 extern uint16_t newLinuxCommands;
-extern float LinuxCommands[11];
+extern float LinuxCommands[CMDNUM_FROM_FLOATS];
 
 extern uint16_t NewLVData;
 extern float fromLVvalues[LVNUM_TOFROM_FLOATS];
