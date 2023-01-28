@@ -62,7 +62,7 @@ int my_sem_getvalue() {
   }
 }
 
-// int main(){
-//   my_sem_open();
-//   return my_sem_post();
-// }
+int main(){
+  my_sem_open();
+  return my_sem_post();
+}

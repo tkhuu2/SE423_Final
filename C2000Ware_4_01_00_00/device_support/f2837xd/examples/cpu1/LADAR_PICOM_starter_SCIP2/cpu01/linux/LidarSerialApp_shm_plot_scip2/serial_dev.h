@@ -19,7 +19,7 @@
  * Very useful serial interface - you might wanna use it
  * if you want to change the sickd or customise it
  */
- 
+
 /*
   char sd_dev_name[256];
   int sd_dev_fd;
@@ -27,7 +27,7 @@
   long sd_flags;
   int sd_blocking;
   char sd_data[256];
-*/
+  */
   int sd_setup(char *dn);
   int sd_kill();
   int sd_set_blocking();
@@ -45,6 +45,6 @@
   int sd_iflush();
   int sd_oflush();
   int sd_ioflush();
-
+  
 
 #endif

@@ -4,7 +4,7 @@ import numpy as np
 import math
 import struct
 from ctypes import *
-so_file = "/home/pi/LidarSerialApp_shm_plot/plot_sem.so"
+so_file = "./plot_sem.so"
 fcn = CDLL(so_file)
 fcn.my_sem_open()
 fig = plt.figure()

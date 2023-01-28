@@ -136,7 +136,17 @@ int run_app()
         else if (read_lidar_state == 1)
         { //get the headers
           G_count += 1; //count the number of headers
-          if (G_count >= 12)
+          if (G_count == 14) {
+            if (data != '0') {
+              read_lidar_state = 0;
+            }
+          }
+          if (G_count == 15) {
+                if (data != '0') {
+                    read_lidar_state = 0;
+                }
+            }
+          if (G_count >= 23)
           { //there are total 12 things before the data
             read_lidar_state = 2;
             get_dis_first = 1;
@@ -148,6 +158,7 @@ int run_app()
           if (data == 0x0a)
           { //check for line feed
             LF_count += 1;
+            get_dis_first = 1;
           }
           else
           {
@@ -186,9 +197,9 @@ int run_app()
             read_lidar_state = 0;
             to_xy = 1;
             pingpong = 1 - pingpong;
-            printf("%.3f %.3f %.3f \n", lidar_dist_pong[0], lidar_dist_pong[1], lidar_dist_pong[2]);//print the first three distance
+            // printf("%.3f %.3f %.3f \n", lidar_dist_pong[0], lidar_dist_pong[1], lidar_dist_pong[2]);//print the first three distance
 
-            if (count % 1 == 0)
+            if (dis_index > 5)
             {
               for (ii = 0; ii < 228; ii++)
               {
