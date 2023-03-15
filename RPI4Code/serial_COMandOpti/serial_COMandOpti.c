@@ -465,7 +465,7 @@ int main()
           if (receiving_count == 4*LVNUM_TOFROM_FLOATS) {
             receiving_count = 0;
             receiving_state = 0;
-            printf("Time:%.1f,Float1:%.3f,Float2:%.3f\n",shared_mem_ptr_sendto_LVCOMApp->new_ToLV.data_flts[2],shared_mem_ptr_sendto_LVCOMApp->new_ToLV.data_flts[0],shared_mem_ptr_sendto_LVCOMApp->new_ToLV.data_flts[1]);
+            printf("angle:%.3f,x:%.3f,y:%.3f\n",shared_mem_ptr_sendto_LVCOMApp->new_ToLV.data_flts[2],shared_mem_ptr_sendto_LVCOMApp->new_ToLV.data_flts[0],shared_mem_ptr_sendto_LVCOMApp->new_ToLV.data_flts[1]);
 
             if (sem_getvalue(sendto_LVCOMApp_mutex_sem,  &sem_count_send) == 0) {
               if (sem_post(sendto_LVCOMApp_mutex_sem) == -1){
