@@ -4,14 +4,14 @@ import sensor, image, time
 import pyb, ustruct
 
 # Define Threshold for LAB Channels
-L_min = ???
-L_max = ???
+L_min = 52 # for orange
+L_max = 75
 
-A_min = ???
-A_max = ???
+A_min = 10
+A_max = 64
 
-B_min = ???
-B_max = ???
+B_min = 10
+B_max = 40
 
 sensor.reset()
 sensor.set_pixformat(sensor.RGB565)
