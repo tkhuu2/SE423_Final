@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include <string.h>
+#include <string.h> 
 #include <math.h>
 #include <limits.h>
 #include "F28x_Project.h"
@@ -23,6 +23,7 @@
 #include "MatrixMath.h"
 #include "SE423Lib.h"
 #include "OptiTrack.h"
+
 
 #define PI          3.1415926535897932384626433832795
 #define TWOPI       6.283185307179586476925286766559
@@ -110,7 +111,8 @@ int16_t RobotState = 1;
 int16_t checkfronttally = 0;
 int32_t WallFollowtime = 0;
 
-#define NUMWAYPOINTS 8
+//Change waypoints to 10    TK
+#define NUMWAYPOINTS 10
 uint16_t statePos = 0;
 pose robotdest[NUMWAYPOINTS];  // array of waypoints for the robot
 uint16_t i = 0;//for loop
@@ -372,6 +374,9 @@ void main(void)
     robotdest[5].x = 4;     robotdest[5].y = 2;
     robotdest[6].x = 4;     robotdest[6].y = 10;
     robotdest[7].x = 0;     robotdest[7].y = 9;
+    robotdest[8].x = 0;     robotdest[8].y = 0; //added point 9 DR
+    robotdest[9].x = 5;     robotdest[9].y = 5; //added point 10 TK
+    
 
     // ROBOTps will be updated by Optitrack during gyro calibration
     // TODO: specify the starting position of the robot
@@ -609,6 +614,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
     IMU_data[4] = readdata[6];
     IMU_data[5] = readdata[7];
 
+    //The IMU raw data is scaled to acceleration in g and rates in degrees/second.  TK
     accelx = (((float)(IMU_data[0]))*4.0/32767.0);
     accely = (((float)(IMU_data[1]))*4.0/32767.0);
     accelz = (((float)(IMU_data[2]))*4.0/32767.0);
@@ -616,12 +622,14 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
     gyroy  = (((float)(IMU_data[4]))*250.0/32767.0);
     gyroz  = (((float)(IMU_data[5]))*250.0/32767.0);
 
+    //the sensor zero values are found by the first 2 seconds doing nothing    TK
     if(calibration_state == 0){
         calibration_count++;
         if (calibration_count == 2000) {
             calibration_state = 1;
             calibration_count = 0;
         }
+    //next 2 seconds summing up 2000 readings   TK
     } else if(calibration_state == 1){
         accelx_offset+=accelx;
         accely_offset+=accely;
@@ -631,6 +639,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         gyroz_offset+=gyroz;
         gyroLPR510_offset+=adcC5Volt;
         calibration_count++;
+        //at 4 seconds dividing the sum by 2000 to find the average zero    TK
         if (calibration_count == 2000) {
             calibration_state = 2;
             accelx_offset/=2000.0;
@@ -657,6 +666,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             doneCal = 1;
             newOPTITRACKpose = 0;
         }
+    //after four seconds subtract the zero value from the sensor reading    TK
     } else if(calibration_state == 3){
         accelx -=(accelx_offset);
         accely -=(accely_offset);
@@ -668,6 +678,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         RightWheel = readEncRight();
         HandValue = readEncWheel();
 
+        //Calculate gyro bearing    TK
         gyro9250_angle = gyro9250_angle + (gyroz + old_gyro9250)*.0005 - gyro9250_drift;
         old_gyro9250 = gyroz;
 
@@ -677,6 +688,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         gyro9250_radians = (gyro9250_angle * (PI/180.0));
         gyroLPR510_radians = gyroLPR510_angle * 400 * (PI/180.0);
 
+        //Calculate wheel velocity  TK
         LeftVel = (1.235/12.0)*(LeftWheel - LeftWheel_1)*1000;
         RightVel = (1.235/12.0)*(RightWheel - RightWheel_1)*1000;
 
@@ -855,7 +867,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             }
             break;
 
-        case 20:
+        case 20:    //Follow Orange or Purple golf ball TK
             // put vision code here
             break;
         default:
