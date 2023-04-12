@@ -23,7 +23,7 @@
 #include "MatrixMath.h"
 #include "SE423Lib.h"
 #include "OptiTrack.h"
-#include "hello.c"
+
 
 #define PI          3.1415926535897932384626433832795
 #define TWOPI       6.283185307179586476925286766559
