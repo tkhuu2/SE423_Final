@@ -218,6 +218,10 @@ int16_t dan28027adc1 = 0;
 int16_t dan28027adc2 = 0;
 uint16_t MPU9250ignoreCNT = 0;  //This is ignoring the first few interrupts if ADCC_ISR and start sending to IMU after these first few interrupts.
 
+//variables for exercise 4 DR
+float blobDist1 = 0.0;
+float blobDist2 = 0.0;
+
 void main(void)
 {
     // PLL, WatchDog, enable Peripheral Clocks
@@ -425,7 +429,7 @@ void main(void)
         if (UARTPrint == 1 ) {
 
             if (readbuttons() == 0) {
-                UART_printfLine(1,"Vrf:%.2f trn:%.2f",vref,turn);				
+                UART_printfLine(1,"d1:%.2f d2:%.2f",blobDist1,blobDist2);
 //                UART_printfLine(1,"x:%.2f:y:%.2f:a%.2f",ROBOTps.x,ROBOTps.y,ROBOTps.theta);
                 UART_printfLine(2,"F%.4f R%.4f",LADARfront,LADARrightfront);
             } else if (readbuttons() == 1) {
@@ -621,6 +625,12 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
     gyrox  = (((float)(IMU_data[3]))*250.0/32767.0);
     gyroy  = (((float)(IMU_data[4]))*250.0/32767.0);
     gyroz  = (((float)(IMU_data[5]))*250.0/32767.0);
+
+    blobDist1 = -0.000002159 * (MaxRowThreshold1* MaxRowThreshold1 * MaxRowThreshold1) +
+            0.0011868 * (MaxRowThreshold1 * MaxRowThreshold1) + -0.2245 * MaxRowThreshold1 + 15.93;
+    blobDist2 = -0.000002159 * (MaxRowThreshold2* MaxRowThreshold2 * MaxRowThreshold2) +
+                0.0011868 * (MaxRowThreshold2 * MaxRowThreshold2) + -0.2245 * MaxRowThreshold2 + 15.93;
+
 
     //the sensor zero values are found by the first 2 seconds doing nothing    TK
     if(calibration_state == 0){
