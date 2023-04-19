@@ -107,7 +107,7 @@ float LADARxoffset = 0;
 float LADARyoffset = 0;
 
 uint32_t timecount = 0;
-int16_t RobotState = 1;
+int16_t RobotState = 1; // this was 1 DR
 int16_t checkfronttally = 0;
 int32_t WallFollowtime = 0;
 
@@ -221,6 +221,19 @@ uint16_t MPU9250ignoreCNT = 0;  //This is ignoring the first few interrupts if A
 //variables for exercise 4 DR
 float blobDist1 = 0.0;
 float blobDist2 = 0.0;
+
+//variables for exercise 5 DR
+float kpvision = -0.05; //initially 0.05
+float colcentroid = 0.0;
+uint16_t state22Count = 1;
+uint16_t state24Count = 1;
+uint16_t state26Count = 1;
+uint16_t state1Count = 1;
+uint16_t state30Count = 1;
+uint16_t state32Count = 1;
+uint16_t state34Count = 1;
+uint16_t state36Count = 1;
+
 
 void main(void)
 {
@@ -429,7 +442,8 @@ void main(void)
         if (UARTPrint == 1 ) {
 
             if (readbuttons() == 0) {
-                UART_printfLine(1,"d1:%.2f d2:%.2f",blobDist1,blobDist2);
+                //UART_printfLine(1,"d1:%.2f d2:%.2f",blobDist1,blobDist2);
+                UART_printfLine(1,"state:%d",RobotState);
 //                UART_printfLine(1,"x:%.2f:y:%.2f:a%.2f",ROBOTps.x,ROBOTps.y,ROBOTps.theta);
                 UART_printfLine(2,"F%.4f R%.4f",LADARfront,LADARrightfront);
             } else if (readbuttons() == 1) {
@@ -833,6 +847,20 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         case 1:
 
             // vref and turn are the vref and turn returned from xy_control
+            //purple area is 20 at 3.5 tiles 
+            if (state1Count >= 2000) {
+                if (MaxAreaThreshold1 >= MaxAreaThreshold2) {
+                    if (MaxAreaThreshold1 > 25.0 ) {
+                        RobotState = 20;
+                    }
+                } else {
+                    if (MaxAreaThreshold2 > 20.0) {
+                        RobotState = 30;
+                    }
+                }
+            } else {
+                state1Count++;
+            }
 
             if (LADARfront < 1.2) {
                 vref = 0.2;
@@ -877,9 +905,130 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             }
             break;
 
-        case 20:    //Follow Orange or Purple golf ball TK
-            // put vision code here
+        case 20:    //Follow Orange Ball TK
+            //follow the orange golf ball so it stays in center camera view
+            //code will use col centroid for the center camera view
+            //change the centroid so that zero is in the center of the view
+            //centroid will be a value between -160 and 160
+            if (MaxColThreshold1 == 0 || MaxAreaThreshold1 < 3) {
+                vref = 0;
+                turn = 0;
+            } else {
+                vref = 0.75;
+                turn = kpvision * (0.0 - colcentroid);
+            }
+
+
+            //bottom row number for purple is 425
+            colcentroid = MaxColThreshold1 - 160.0;
+            if (MaxAreaThreshold1 > 546.0) { //546 is the initial number for orange
+                RobotState = 22;
+
+            }
             break;
+
+        case 22:    //Simulating you waiting for gripper door to open   TK
+            //Keep track of how long you've been in RobotState 22
+            vref = 0;
+            turn = 0;
+            //if 1 sec has gone by switch to RobotState 24
+            if(state22Count == 1000) {
+                state22Count = 1;
+                RobotState = 24;
+            } else {
+                state22Count++;
+            }
+            
+            break;
+
+       case 24:    //Simulating you waiting for gripper door to open    TK
+            //Keep track of how long you've been in RobotState 24
+            vref = 0.5;
+            turn = 0;
+            //if 1 sec has gone by switch to RobotState 26
+            if(state24Count == 1000) {
+                state24Count = 1;
+                RobotState = 26;
+            } else {
+                state24Count++;
+            }
+            
+            break;
+
+       case 26:    //Resume movement to X,Y point   TK
+            //Keep track of how long you've been in RobotState 26
+            vref = 0;
+            turn = 0;
+            //if 1 sec has gone by switch to RobotState 1 
+            if(state26Count == 1000) {
+                state26Count = 1;
+                RobotState = 1;
+                state1Count = 1;
+            } else {
+                state26Count++;
+            }
+            break;
+
+        case 30:    //Follow Purple Ball TK
+            //follow the purple golf ball so it stays in center camera view
+            //code will use col centroid for the center camera view
+            //change the centroid so that zero is in the center of the view
+            //centroid will be a value between -160 and 160
+            colcentroid = MaxColThreshold2 - 160.0;
+            if (MaxAreaThreshold2 > 425.0) { //425 is the initial number for purple
+                RobotState = 32;
+            }
+            if (MaxColThreshold2 == 0 || MaxAreaThreshold2 < 3) {
+                vref = 0;
+                turn = 0;
+            } else {
+                vref = 0.75;
+                turn = kpvision * (0.0 - colcentroid);
+            }
+            break;
+
+        case 32:    //Simulating you waiting for gripper door to open   TK
+            //Keep track of how long you've been in RobotState 32
+            vref = 0;
+            turn = 0;
+            //if 1 sec has gone by switch to RobotState 34
+            if(state32Count == 1000) {
+                state32Count = 1;
+                RobotState = 34;
+            } else {
+                state32Count++;
+            }
+            
+            break;
+
+       case 34:    //Simulating you waiting for gripper door to open    TK
+            //Keep track of how long you've been in RobotState 34
+            vref = 0.5;
+            turn = 0;
+            //if 1 sec has gone by switch to RobotState 36
+            if(state34Count == 1000) {
+                state34Count = 1;
+                RobotState = 36;
+            } else {
+                state34Count++;
+            }
+            
+            break;
+
+       case 36:    //Resume movement to X,Y point   TK
+            //Keep track of how long you've been in RobotState 36
+            vref = 0;
+            turn = 0;
+            //if 1 sec has gone by switch to RobotState 1 
+            if(state36Count == 1000) {
+                state36Count = 1;
+                RobotState = 1;
+                state1Count = 1;
+            } else {
+                state36Count++;
+            }
+            break;
+
         default:
             break;
         }
