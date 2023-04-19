@@ -10,8 +10,8 @@ lcd.init(triple_buffer=True) # Initialize the lcd screen.  Make Non-blocking but
 
 uart = pyb.UART(3)
 uart.init(115200, bits=8, parity=None)
-threshold1 = (0, 100, -128, 127, -128, 127) # change to a color threshold range
-threshold2 = (0, 100, -128, 127, -128, 127) # change to a color threshold range
+threshold1 = (41, 75, 15, 64, 10, 41) # orange color
+threshold2 = (25, 72, 3, 13, -29, -15) # purple color
 # Packets to Send
 blob_packet = '<fff'
 
@@ -40,8 +40,8 @@ while True:
 
     img = sensor.snapshot()
 
-    blobs1 = img.find_blobs([threshold1], roi=(0,80,320,160), pixels_threshold=5, area_threshold=20)
-    blobs2 = img.find_blobs([threshold2], roi=(0,80,320,160), pixels_threshold=5, area_threshold=20)
+    blobs1 = img.find_blobs([threshold1], roi=(0,80,320,160), pixels_threshold=4, area_threshold=16) # changed this to 4,16 from 5,20
+    blobs2 = img.find_blobs([threshold2], roi=(0,80,320,160), pixels_threshold=4, area_threshold=16) # changed this to 4,16 from 5,20
 
     if blobs1:
         blob1_sort = sorted(blobs1, key = lambda b: b.pixels(), reverse=True)
