@@ -854,6 +854,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             // vref and turn are the vref and turn returned from xy_control
             //purple area is 20 at 3.5 tiles 
             if (state1Count >= 2000) {
+                //if robot inside course look for colored golf balls    TK
                 if (ROBOTps.y >= 0) {
                     if (MaxAreaThreshold1 >= MaxAreaThreshold2) {
                         if (MaxAreaThreshold1 > 25.0 ) {
