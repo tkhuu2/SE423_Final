@@ -513,9 +513,9 @@ void main(void)
 
             if (readbuttons() == 0) {
                 //UART_printfLine(1,"d1:%.2f d2:%.2f",blobDist1,blobDist2);
-                UART_printfLine(1,"state:%d",RobotState);
+                UART_printfLine(1,"ST:%d AR:%d",RobotState, AstarRunning);
                 //                UART_printfLine(1,"x:%.2f:y:%.2f:a%.2f",ROBOTps.x,ROBOTps.y,ROBOTps.theta);
-                UART_printfLine(2,"F%.4f R%.4f",LADARfront,LADARrightfront);
+                UART_printfLine(2,"PR:%d PC:%d SP:%d", pathRow, pathCol, statePos);
             } else if (readbuttons() == 1) {
                 UART_printfLine(1,"O1A:%.0fC:%.0fR:%.0f",MaxAreaThreshold1,MaxColThreshold1,MaxRowThreshold1);
                 UART_printfLine(2,"P1A:%.0fC:%.0fR:%.0f",MaxAreaThreshold2,MaxColThreshold2,MaxRowThreshold2);
