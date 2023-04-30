@@ -132,6 +132,7 @@ char G_command[] = "G04472503\n"; //command for getting distance -120 to 120 deg
 uint16_t G_len = 11; //length of command
 xy ladar_pts[228]; //xy data
 float LADARrightfront = 0;
+float LADARleftfront = 0;
 float LADARfront = 0;
 float LADARtemp_x = 0;
 float LADARtemp_y = 0;
@@ -185,7 +186,7 @@ int32_t WallFollowtime = 0;
 
 //Change waypoints to 6    TK
 #define NUMWAYPOINTS 6
-uint16_t statePos = 0;
+uint16_t statePos = 1;
 pose robotdest[NUMWAYPOINTS];  // array of waypoints for the robot
 uint16_t i = 0;//for loop
 
@@ -866,7 +867,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         if (newAstarPath == 1) {
             newAstarPath = 0;
             AstarRunning = 0;
-            pathCounter = 0;
+            pathCount = 0;
             if (path_received[80] == 0) {
                 // means no errors so setup robot to follow this new path???
                 statePos = 1; //set to 1 to not go to the first point(which is the position the robot is at)
@@ -962,8 +963,15 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
         // Make sure this function is called every time in this function even if you decide not to use its vref and turn
         // uses xy code to step through an array of positions
-        if( xy_control(&vref, &turn, 1.0, ROBOTps.x, ROBOTps.y, pathCol[pathCounter], pathRow[pathCounter], ROBOTps.theta, 0.25, 0.5)) {
-            pathCounter = (pathCounter+1) % numpts;
+        if( xy_control(&vref, &turn, 1.0, ROBOTps.x, ROBOTps.y, pathCol[pathCount], pathRow[pathCount], ROBOTps.theta, 0.25, 0.5)) {
+            if (pathCount == numpts){
+                statePos = (statePos+1) %NUMWAYPOINTS;
+                pathCount = 0;
+                newAstarPath = 1;
+            }
+            else{
+                pathCount++;
+            }
         }
         // state machine
         switch (RobotState) {
@@ -1106,7 +1114,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             if(state22Count == 1000) {
                 state24Count = 1;
                 RobotState = 24;
-              } else {
+            } else {
                 //TO DO: Open gripper door here DR 
                 if(state22Count == 500) {
                     setEPWM5A_RCServo(-90);
@@ -1179,7 +1187,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             if(state32Count == 1000) {
                 state34Count = 1;
                 RobotState = 34;
-              } else {
+            } else {
                 //TO DO: Open gripper door here DR 
                 if(state32Count == 500) {
                     setEPWM5A_RCServo(-90);
@@ -1330,7 +1338,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             }
             serial_sendSCID(&SerialD, SendAStarRawData, 36);
         }
-///////////////////////////////////////////// END /////////////////////////////////////////////
+        ///////////////////////////////////////////// END /////////////////////////////////////////////
     }
     timecount++;
     if((timecount%200) == 0)
