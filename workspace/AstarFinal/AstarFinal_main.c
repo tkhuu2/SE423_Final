@@ -195,6 +195,15 @@ pose waypoints[NUMWAYPOINTS];  // array of waypoints for the robot
 int16_t wayindex = 0;
 uint16_t i = 0;//for loop
 
+//////////// BUG ALGORITHM INITS
+//float tempcos = cosf(ROBOTps.theta);
+//float tempsin = sinf(ROBOTps.theta);
+//float XinRobot = 0;
+//float YinRobot = 0;
+//
+//XinRobot = robotdest[statePos].x*tempcos + robotdest[statePos].y*tempsin - ROBOTps.x*tempcos - ROBOTps.y*tempsin;
+//YinRobot = -robotdest[statePos].x*tempsin + robotdest[statePos].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos
+
 ///////////// PI CONTROL INITS
 uint16_t right_wall_follow_state = 2;  // right follow
 uint16_t left_wall_follow_state = 2; //left wall follow state DRTK
