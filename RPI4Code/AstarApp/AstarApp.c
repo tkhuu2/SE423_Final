@@ -249,6 +249,42 @@ int getNeighbors(int rowCurr, int colCurr)
 		neighbors[numNeighbors] = nodeToAdd;
 		numNeighbors++;
 	}
+	if((canTravel(rowCurr-1, colCurr+1) == 1) //can travel UP_RIGHT
+		&& (canTravel(rowCurr-1,colCurr) == 1) //can travel UP (to prevent clipping on corner of obstacles)
+		&& (canTravel(rowCurr,colCurr+1) == 1)) //can travel RIGHT
+	{
+		nodeToAdd.row = rowCurr-1;
+		nodeToAdd.col = colCurr+1;
+		neighbors[numNeighbors] = nodeToAdd;
+		numNeighbors++;
+	}
+	if((canTravel(rowCurr-1, colCurr-1) == 1) //can travel UP_LEFT
+		&& (canTravel(rowCurr-1,colCurr) == 1) //can travel UP
+		&& (canTravel(rowCurr,colCurr-1) == 1)) //can travel LEFT
+	{
+		nodeToAdd.row = rowCurr-1;
+		nodeToAdd.col = colCurr-1;
+		neighbors[numNeighbors] = nodeToAdd;
+		numNeighbors++;
+	}
+	if((canTravel(rowCurr+1, colCurr+1) == 1) //can travel DOWN_RIGHT
+		&& (canTravel(rowCurr+1,colCurr) == 1) //can travel DOWN
+		&& (canTravel(rowCurr,colCurr+1) == 1)) //can travel RIGHT
+	{
+		nodeToAdd.row = rowCurr+1;
+		nodeToAdd.col = colCurr+1;
+		neighbors[numNeighbors] = nodeToAdd;
+		numNeighbors++;
+	}
+	if((canTravel(rowCurr+1, colCurr-1) == 1) //can travel DOWN_LEFT
+		&& (canTravel(rowCurr+1,colCurr) == 1) //can travel DOWN
+		&& (canTravel(rowCurr,colCurr-1) == 1)) //can travel LEFT
+	{
+		nodeToAdd.row = rowCurr+1;
+		nodeToAdd.col = colCurr-1;
+		neighbors[numNeighbors] = nodeToAdd;
+		numNeighbors++;
+	}
 	return numNeighbors;
 }
  
@@ -370,7 +406,12 @@ int astar(int rowStart, int colStart, int rowEnd, int colEnd)
 			/*neighbor.distTravelFromStart (g) = q.distTravelFromStart + distance between neighbor and q which is always 1 when search just top left bottom right*/
 			// 6.  Set this neighbor's distance traveled from the start.  Remember you have the variable "currDist" that is the distance of q to Start
 			//need to consider diagonal distance now
+			
+			if(heuristic(next.row, next.col, minDistNode.row, minDistNode.col) > 1){
+				next.distTravelFromStart = currDist + sqrt(2.0);}
+			else{
 			next.distTravelFromStart = currDist + 1;
+			}
 			// printf("next.distTravelFromStart %f\n", next.distTravelFromStart);
 			
 			/*neighbor.distToGoal (h) = distance from goal to neighbor, heuristic function	(estimated distance to goal)*/
