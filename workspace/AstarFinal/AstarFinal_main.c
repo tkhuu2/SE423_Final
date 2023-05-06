@@ -181,6 +181,8 @@ pose ROBOTps = {0,0,0}; //robot position
 pose LADARps = {3.5/12.0,0,1};  // 3.5/12 for front mounting, theta is not used in this current code
 float LADARxoffset = 0;
 float LADARyoffset = 0;
+float ballposx = 0.0; // for labview RG
+float ballposy = 0.0;
 
 uint32_t timecount = 0;
 int16_t RobotState = 1;
@@ -196,11 +198,13 @@ int16_t wayindex = 0;
 uint16_t i = 0;//for loop
 
 //////////// BUG ALGORITHM INITS
-//float tempcos = cosf(ROBOTps.theta);
-//float tempsin = sinf(ROBOTps.theta);
-//float XinRobot = 0;
-//float YinRobot = 0;
-//
+float tempcos = 0;
+float tempsin = 0;
+float XinRobot = 0;
+float YinRobot = 0;
+
+//tempcos = cosf(ROBOTps.theta);
+//tempsin = sinf(ROBOTps.theta);
 //XinRobot = robotdest[statePos].x*tempcos + robotdest[statePos].y*tempsin - ROBOTps.x*tempcos - ROBOTps.y*tempsin;
 //YinRobot = -robotdest[statePos].x*tempsin + robotdest[statePos].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos
 
@@ -309,10 +313,12 @@ float blobDist2 = 0.0;
 //variables for exercise 5 DR
 float kpvision = -0.05; //initially 0.05
 float colcentroid = 0.0;
+uint16_t state1Count = 1;
+uint16_t state5Count = 0;
+uint16_t state6Count = 0;
 uint16_t state22Count = 1;
 uint16_t state24Count = 1;
 uint16_t state26Count = 1;
-uint16_t state1Count = 1;
 uint16_t state30Count = 1;
 uint16_t state32Count = 1;
 uint16_t state34Count = 1;
@@ -326,6 +332,8 @@ int16_t DAN28027Garbage = 0;
 int16_t dan28027adc1 = 0;
 int16_t dan28027adc2 = 0;
 uint16_t MPU9250ignoreCNT = 0;  //This is ignoring the first few interrupts if ADCC_ISR and start sending to IMU after these first few interrupts.
+uint16_t golfballcount = 0; //RG
+float ballcolor = 2; // RG
 
 void main(void)
 {
@@ -532,10 +540,10 @@ void main(void)
 
             if (readbuttons() == 0) {
                 //UART_printfLine(1,"d1:%.2f d2:%.2f",blobDist1,blobDist2);
-                //UART_printfLine(1,"ST:%d AR:%d",RobotState, AstarRunning);
+                UART_printfLine(1,"ST:%d AR:%d",RobotState, AstarRunning);
                 //check threshold between blocks
-                UART_printfLine(1,"EL:%.2f F:%.2f",LADARentireleft, LADARfront);
-                UART_printfLine(2,"ER:%.2f", LADARentireright);
+                //UART_printfLine(1,"EL:%.2f F:%.2f",LADARentireleft, LADARfront);
+                //UART_printfLine(2,"ER:%.2f", LADARentireright);
                 //                UART_printfLine(1,"x:%.2f:y:%.2f:a%.2f",ROBOTps.x,ROBOTps.y,ROBOTps.theta);
                 //UART_printfLine(2,"SP:%d", statePos);
             } else if (readbuttons() == 1) {
@@ -983,6 +991,16 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         if( xy_control(&vref, &turn, 1.0, ROBOTps.x, ROBOTps.y, robotdest[statePos].x, robotdest[statePos].y, ROBOTps.theta, 0.25, 0.5)) {
             if (AstarRunning == 0) {
                 if (statePos == numpts-1) {
+                    if (wayindex == 5) {
+                        //change to state where we do the drop off for purple
+                        RobotState = 5;
+                        state5Count = 0;
+                    }
+                    if (wayindex == 6) {
+                        //change to state where we do the drop off for orange
+                        RobotState = 6;
+                        state6Count = 0;
+                    }
                     wayindex = (wayindex + 1) % NUMWAYPOINTS;
                     StartAstar = 1;
                 }
@@ -1000,7 +1018,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             //purple area is 20 at 3.5 tiles
             if (state1Count >= 2000) {
                 //if robot inside course look for colored golf balls    TK
-                if (ROBOTps.y >= 0) {
+                if (ROBOTps.y > 0) {
                     if (MaxAreaThreshold1 >= MaxAreaThreshold2) {
                         if (MaxAreaThreshold1 > 25.0 ) {
                             RobotState = 20;
@@ -1037,6 +1055,59 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             }
 
             break;
+        //Drop off for purple golf balls DR TK
+        case 5:
+            if (state5Count == 0) {
+                setEPWM3A_RCServo(-42); //moves flap righ to let purple balls out
+                setEPWM5A_RCServo(-90); //opens gripper door
+            }
+            if (state5Count <= 250) { //moving forwards
+                vref = 0.5;
+                turn = 0.0;
+            }
+            if (state5Count > 250 && state5Count <= 350) { //stop
+                vref = 0.0;
+                turn = 0.0;
+            }
+            if (state5Count > 350 && state5Count <= 1350) { //goes backwards
+                vref = -1.0;
+                turn = 0.0;
+            }
+            if (state5Count > 1350) { //Go back to state 1 and start A*
+                vref = 0.0;
+                turn = 0.0;
+                RobotState = 1;
+                StartAstar = 1;
+            }
+            state5Count++;
+            break;
+
+        //Drop off for orange golf balls DR TK
+        case 6:
+            if (state6Count == 0) {
+                setEPWM3A_RCServo(42); //moves flap left to let orange balls out
+            }
+            if (state6Count <= 250) { //moving forwards
+                vref = 0.5;
+                turn = 0.0;
+            }
+            if (state6Count > 250 && state6Count <= 350) { //stop
+                vref = 0.0;
+                turn = 0.0;
+            }
+            if (state6Count > 350 && state6Count <= 1350) { //goes backwards
+                vref = -1.0;
+                turn = 0.0;
+            }
+            if (state6Count > 1350) { //go back to state 1 and start A*
+                vref = 0.0;
+                turn = 0.0;
+                RobotState = 1;
+                StartAstar = 1;
+                setEPWM5A_RCServo(90); //close gripper door
+            }
+            state6Count++;
+            break;
         case 10:    //Right wall follow TK
             if (right_wall_follow_state == 1) {
                 //Left Turn
@@ -1062,7 +1133,13 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
             //robot wall follows for 5 seconds then goes back towards X, Y (case 1) TK
             WallFollowtime++;
-            if ( (WallFollowtime > 10000) && (LADARfront > 1.3) ) {
+
+            //breakaway with bug algorithm  TK
+            tempcos = cosf(ROBOTps.theta);
+            tempsin = sinf(ROBOTps.theta);
+            YinRobot = -waypoints[wayindex].x*tempsin + waypoints[wayindex].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos;
+
+            if ( ((WallFollowtime > 3000) && (YinRobot > 0.3)) || ((WallFollowtime > 3000) && (LADARfront > 1.3))) {
                 RobotState = 1;
                 StartAstar = 1;
                 state1Count = 0;
@@ -1072,14 +1149,14 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         case 11:    //Left wall follow  TK
             if (left_wall_follow_state == 1) {
                 //right Turn
-                turn = -Kp_front_wall*(14.5 - LADARfront);  //Tune this
+                turn = -Kp_front_wall*(14.5 - LADARfront);
                 vref = front_turn_velocity;
                 if (LADARfront > left_turn_Stop_threshold) {
                     left_wall_follow_state = 2;
                 }
             } else if (left_wall_follow_state == 2) {
                 //left Wall Follow
-                turn = Kp_left_wall*(ref_right_wall - LADARleftfront); //going to have to change kprightwall to kpleftwall once figured out DRTK
+                turn = Kp_left_wall*(ref_right_wall - LADARleftfront);
                 vref = foward_velocity;
                 if (LADARfront < left_turn_Start_threshold) {
                     left_wall_follow_state = 1;
@@ -1094,7 +1171,13 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
             //robot wall follows for 5 seconds then goes back towards X, Y (case 1) TK
             WallFollowtime++;
-            if ( (WallFollowtime > 10000) && (LADARfront > 1.3) ) {
+
+            //breakaway with bug algorithm  TK
+            tempcos = cosf(ROBOTps.theta);
+            tempsin = sinf(ROBOTps.theta);
+            YinRobot = -waypoints[wayindex].x*tempsin + waypoints[wayindex].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos;
+
+            if ( ((WallFollowtime > 3000) && (YinRobot > -0.3)) || ((WallFollowtime > 3000) && (LADARfront > 1.3))) {
                 RobotState = 1;
                 StartAstar = 1;
                 state1Count = 0;
@@ -1121,7 +1204,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             if (MaxAreaThreshold1 > 546.0) { //546 is the initial number for orange
                 state22Count = 1;
                 RobotState = 22;
-
+                ballcolor = 1; //RG for labview golfball color
             }
             break;
 
@@ -1130,7 +1213,12 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
             vref = 0;
             turn = 0;
-            if(state22Count == 500) {
+
+            if (state22Count == 1) {
+                setEPWM3A_RCServo(42); //orange ball left
+            }
+            //Open gripper door here DR LE
+            if(state22Count == 900) {
                 setEPWM5A_RCServo(-90);
             }
             //if 1 sec has gone by switch to RobotState 24
@@ -1138,42 +1226,46 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
                 state24Count = 1;
                 RobotState = 24;
             } else {
-                //TO DO: Open gripper door here DR
-
                 state22Count++;
             }
-
             break;
 
         case 24:
             //Keep track of how long you've been in RobotState 24
             //This case puts the golf ball in the robot DR
-
             vref = 0.5;
             turn = 0;
             //if 1 sec has gone by switch to RobotState 26
             if(state24Count == 1000) {
                 state26Count = 1;
                 RobotState = 26;
+                ballposx = ROBOTps.x ; // this is for labview to know where balls have been picked up RG
+                ballposy = ROBOTps.y ;
+                golfballcount++ ;
             } else {
-                //TO DO: Move inside servo left or right depending on if ball is orange or purple DR
-                setEPWM3A_RCServo(90); //orange ball left
                 state24Count++;
             }
-
             break;
 
         case 26:    //Resume movement to X,Y point   TK
             //Keep track of how long you've been in RobotState 26
             vref = 0;
             turn = 0;
+
+            if (state26Count == 1) {
+                //Close gripper door DR LE
+                setEPWM5A_RCServo(90);
+            }
+
+            if (state26Count == 500) {
+                setEPWM3A_RCServo(-42); //flap door to the right
+            }
+
             //if 1 sec has gone by switch to RobotState 1
             if(state26Count == 1000) {
                 RobotState = 1;
                 state1Count = 0;
             } else {
-                //TO DO: Close gripper door DR
-                setEPWM5A_RCServo(90);
                 state26Count++;
             }
             break;
@@ -1184,9 +1276,10 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             //change the centroid so that zero is in the center of the view
             //centroid will be a value between -160 and 160
             colcentroid = MaxColThreshold2 - 160.0;
-            if (MaxAreaThreshold2 > 425.0) { //425 is the initial number for purple
+            if (MaxAreaThreshold2 > 400.0) { //425 is the initial number for purple
                 state32Count = 1;
                 RobotState = 32;
+                ballcolor = 0; //RG to give labview the ball color
             }
             if (MaxColThreshold2 == 0 || MaxAreaThreshold2 < 3) {
                 vref = 0;
@@ -1202,7 +1295,12 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
             vref = 0;
             turn = 0;
-            if(state32Count == 500) {
+
+            if (state32Count == 1) {
+                setEPWM3A_RCServo(-42);
+            }
+            //Open gripper door here DR LE
+            if(state32Count == 900) {
                 setEPWM5A_RCServo(-90);
             }
             //if 1 sec has gone by switch to RobotState 34
@@ -1210,10 +1308,8 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
                 state34Count = 1;
                 RobotState = 34;
             } else {
-                //TO DO: Open gripper door here DR
                 state32Count++;
             }
-
             break;
 
         case 34:    //Simulating you waiting for gripper door to open    TK
@@ -1225,25 +1321,34 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             if(state34Count == 1000) {
                 state36Count = 1;
                 RobotState = 36;
+                ballposx = ROBOTps.x ; // this is for labview to know where balls have been picked up RG
+                ballposy = ROBOTps.y ;
+                golfballcount++ ;
             } else {
-                //TO DO: Move inside servo left or right depending on if ball is orange or purple DR
-                setEPWM3A_RCServo(-90); //purple ball right
+                //Move inside servo left or right depending on if ball is orange or purple DR LE
                 state34Count++;
             }
-
             break;
 
-        case 36:    //Resume movement to X,Y point   TK
+        case 36: //Resume movement to X,Y point   TK
             //Keep track of how long you've been in RobotState 36
             vref = 0;
             turn = 0;
+            if (state36Count == 1) {
+                //Close gripper door DR LE
+                setEPWM5A_RCServo(90);
+            }
+
+            if (state36Count == 500) {
+                setEPWM3A_RCServo(42);
+            }
             //if 1 sec has gone by switch to RobotState 1
             if(state36Count == 1000) {
                 RobotState = 1;
                 state1Count = 0;
             } else {
-                //TO DO: Close gripper door DR
-                setEPWM5A_RCServo(90);
+                
+                
                 state36Count++;
             }
             break;
@@ -1269,10 +1374,14 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         if((timecount%250) == 0) {
             DataToLabView.floatData[0] = ROBOTps.x;
             DataToLabView.floatData[1] = ROBOTps.y;
-            DataToLabView.floatData[2] = ROBOTps.theta;
-            DataToLabView.floatData[3] = (float)timecount;
-            DataToLabView.floatData[4] = 0.5*(LeftVel + RightVel);
-            DataToLabView.floatData[5] = (float)RobotState;
+            // DataToLabView.floatData[2] = ROBOTps.theta;
+            DataToLabView.floatData[2] = ballposx; // for golf ball collection point RG
+            //DataToLabView.floatData[3] = (float)timecount;
+            DataToLabView.floatData[3] = ballposy;
+            DataToLabView.floatData[4] = ballcolor;
+            //DataToLabView.floatData[4] = 0.5*(LeftVel + RightVel);
+            //DataToLabView.floatData[5] = (float)RobotState;
+            DataToLabView.floatData[5] = golfballcount;
             DataToLabView.floatData[6] = (float)statePos;
             DataToLabView.floatData[7] = LADARfront;
             LVsenddata[0] = '*';  // header for LVdata
@@ -1354,7 +1463,6 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             serial_sendSCID(&SerialD, SendAStarRawData, 36);
             newAstarPath = 1;
         }
-
     }
     timecount++;
     if((timecount%200) == 0)
@@ -1373,7 +1481,6 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
     SpibRegs.SPITXBUF = 0x00DA;
     SpibRegs.SPITXBUF = EPwm1A_F28027;
     SpibRegs.SPITXBUF = EPwm2A_F28027;
-
 
     //##############################################################################################################
     //
@@ -1495,9 +1602,6 @@ __interrupt void SWI2_MiddlePriority(void)     // RAM_CORRECTABLE_ERROR
         }
     }
 
-
-
-
     //###############################################################################################
     //
     // Restore registers saved:
@@ -1506,7 +1610,6 @@ __interrupt void SWI2_MiddlePriority(void)     // RAM_CORRECTABLE_ERROR
     PieCtrlRegs.PIEIER12.all = TempPIEIER;
 
 }
-
 //
 // Connected to PIEIER12_11 (use MINT12 and MG12_11 masks):
 //
@@ -1530,5 +1633,4 @@ __interrupt void SWI3_LowestPriority(void)     // FLASH_CORRECTABLE_ERROR
     //
     DINT;
     PieCtrlRegs.PIEIER12.all = TempPIEIER;
-
 }
