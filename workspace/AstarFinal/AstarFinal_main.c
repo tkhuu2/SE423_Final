@@ -116,6 +116,29 @@ char mapstart[176] =      //16x11   DO NOT MODIFY!!!!!!!!!!!!!
     '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
     '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'   };
 
+typedef struct obs_struct{
+    int16_t tally; //4
+    int16_t senttoLV;
+} obs_struct;
+
+//code that increases map tally is in SWI2
+obs_struct maptally[176] =
+{   {99,0}, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', //top row where obstacles aren't allowed so tally is 99 for those
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', //switch the rest of 0's with {0,0}
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    'x', 'x', 'x', 'x', '0', '0', '0', 'x', 'x', 'x', 'x', //replace these x's with tally's at 99 bc they obstacles by defaults
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
+    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'   };
 
 uint32_t numTimer0calls = 0;
 uint16_t UARTPrint = 0;
@@ -929,6 +952,9 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
                     // reset Map and start another Astar
                     for (i=0;i<176;i++) {
                         map[i] = mapstart[i];
+                        if (maptally[i].tally != 99) {
+                            maptally[i].tally = 0;
+                        }
                     }
                     StartAstar = 1;
                 }
@@ -1553,8 +1579,24 @@ __interrupt void SWI2_MiddlePriority(void)     // RAM_CORRECTABLE_ERROR
 
             ladar_pts[LADARi].x = LADARxoffset + ladar_data[LADARi].distance_ping*cosf(ladar_data[LADARi].angle + ROBOTps.theta);
             ladar_pts[LADARi].y = LADARyoffset + ladar_data[LADARi].distance_ping*sinf(ladar_data[LADARi].angle + ROBOTps.theta);
+            //make sure to not check fot map tallies when turning or moving fast
 
+            if (LADARi == 26) || () || () || () ||() ) { //has to be certain ladar indexes to check for obstacles
+                int16_t temprow = 11 - round(ladar_pts[LADARi].y);
+                int16_t tempcol = 5 + round(ladar_pts[LADARi].x);
+                if ((temprow >= 0) && (temprow < = 11) && (tempcol >= 0) && (tempcol < = 10) ) {
+                    if (maptally[temprow*11+tempcol].tally < 5) {
+                        maptally[temprow*11+tempcol].tally++;
+                        if (maptally[temprow*11+tempcol].tally == 5) {
+                            map[temprow*11+tempcol] = 'x';
+                            StartAstar = 1;
+                        }
+                    }
+
+                }
+            }
         }
+
     } else if (LADARpingpong == 0) {
         // LADARrightfront is the min of dist 52, 53, 54, 55, 56
         LADARrightfront = 19; // 19 is greater than max feet
