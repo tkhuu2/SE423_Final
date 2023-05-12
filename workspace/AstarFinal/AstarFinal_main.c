@@ -123,22 +123,22 @@ typedef struct obs_struct{
 
 //code that increases map tally is in SWI2
 obs_struct maptally[176] =
-{   {99,0}, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', //top row where obstacles aren't allowed so tally is 99 for those
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', //switch the rest of 0's with {0,0}
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    'x', 'x', 'x', 'x', '0', '0', '0', 'x', 'x', 'x', 'x', //replace these x's with tally's at 99 bc they obstacles by defaults
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',
-    '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'   };
+{   {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, //top row where obstacles aren't allowed so tally is 99 for those
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, //switch the rest of 0's with {0,0}
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0}, {0,0},
+    {99,0}, {99,0}, {99,0}, {99,0}, {0,0}, {0,0}, {0,0}, {99,0}, {99,0}, {99,0}, {99,0}, //replace these x's with tally's at 99 bc they obstacles by defaults
+    {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0},
+    {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0},
+    {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0},
+    {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}, {99,0}   };
 
 uint32_t numTimer0calls = 0;
 uint16_t UARTPrint = 0;
@@ -213,7 +213,7 @@ int16_t checkfronttally = 0;
 int32_t WallFollowtime = 0;
 
 ///////////// PATH FINDING INITS
-#define NUMWAYPOINTS 7
+#define NUMWAYPOINTS 8
 uint16_t statePos = 0;
 pose robotdest[40];  // array of waypoints for the robot
 pose waypoints[NUMWAYPOINTS];  // array of waypoints for the robot
@@ -339,6 +339,8 @@ float colcentroid = 0.0;
 uint16_t state1Count = 1;
 uint16_t state5Count = 0;
 uint16_t state6Count = 0;
+uint16_t state10Count = 0;
+uint16_t state20Count = 1;
 uint16_t state22Count = 1;
 uint16_t state24Count = 1;
 uint16_t state26Count = 1;
@@ -503,14 +505,15 @@ void main(void)
     /////////////// SET COURSE WAYPOINTS
     waypoints[0].x = -5;    waypoints[0].y = -3;
     waypoints[1].x = 3;    waypoints[1].y = 7;
+    waypoints[2].x = 5;    waypoints[2].y = 11;
     //middle of bottom
-    waypoints[2].x = -3;     waypoints[2].y = 7;
+    waypoints[3].x = -3;     waypoints[3].y = 7;
     //outside the course
-    waypoints[3].x = 5;     waypoints[3].y = -3;
+    waypoints[4].x = 5;     waypoints[4].y = -3;
     //back to middle
-    waypoints[4].x = 0;     waypoints[4].y = 11;
-    waypoints[5].x = -2;     waypoints[5].y = -4;
-    waypoints[6].x = 2;     waypoints[6].y = -4;
+    waypoints[5].x = 0;     waypoints[5].y = 11;
+    waypoints[6].x = -2;     waypoints[6].y = -4;
+    waypoints[7].x = 2;     waypoints[7].y = -4;
 
     // ROBOTps will be updated by Optitrack during gyro calibration
     // TODO: specify the starting position of the robot
@@ -1014,15 +1017,18 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
         // Make sure this function is called every time in this function even if you decide not to use its vref and turn
         // uses xy code to step through an array of positions
         ///////////////////////////////// A* NORMAL OPERATION //////////////////////////////////////////////////////////////
+        if (wayindex == 5) {
+            setEPWM3A_RCServo(-50); //moves flap right to let purple balls out initially -42
+        }
         if( xy_control(&vref, &turn, 1.0, ROBOTps.x, ROBOTps.y, robotdest[statePos].x, robotdest[statePos].y, ROBOTps.theta, 0.25, 0.5)) {
             if (AstarRunning == 0) {
                 if (statePos == numpts-1) {
-                    if (wayindex == 5) {
+                    if (wayindex == 6) {
                         //change to state where we do the drop off for purple
                         RobotState = 5;
                         state5Count = 0;
                     }
-                    if (wayindex == 6) {
+                    if (wayindex == 7) {
                         //change to state where we do the drop off for orange
                         RobotState = 6;
                         state6Count = 0;
@@ -1048,10 +1054,12 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
                     if (MaxAreaThreshold1 >= MaxAreaThreshold2) {
                         if (MaxAreaThreshold1 > 25.0 ) {
                             RobotState = 20;
+                            state20Count = 1;
                         }
                     } else {
                         if (MaxAreaThreshold2 > 20.0) {
                             RobotState = 30;
+                            state30Count = 1;
                         }
                     }
                 }
@@ -1063,15 +1071,8 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
                     vref = 0.2;
                     checkfronttally++;
                     if (checkfronttally > 120) { // check if LADARfront < 1.2 for 310ms or 3 LADAR samples
-                        if (LADARentireright > LADARentireleft) {
-                            RobotState = 11; // left Wall follow
-                            WallFollowtime = 0;
-                            left_wall_follow_state = 1;
-                        } else {
-                            RobotState = 10; // right Wall follow
-                            WallFollowtime = 0;
-                            right_wall_follow_state = 1;
-                        }
+                        RobotState = 10;
+                        state10Count = 0;
                     }
                 } else {
                     checkfronttally = 0;
@@ -1081,15 +1082,15 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             }
 
             break;
-        //Drop off for purple golf balls DR TK
+            //Drop off for purple golf balls DR TK
         case 5:
-            if (state5Count == 0) {
-                setEPWM3A_RCServo(-42); //moves flap righ to let purple balls out
-                setEPWM5A_RCServo(-90); //opens gripper door
-            }
             if (state5Count <= 250) { //moving forwards
                 vref = 0.5;
                 turn = 0.0;
+            }
+
+            if (state5Count == 350) {
+                setEPWM5A_RCServo(-90); //opens gripper door
             }
             if (state5Count > 250 && state5Count <= 350) { //stop
                 vref = 0.0;
@@ -1108,10 +1109,10 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             state5Count++;
             break;
 
-        //Drop off for orange golf balls DR TK
+            //Drop off for orange golf balls DR TK
         case 6:
             if (state6Count == 0) {
-                setEPWM3A_RCServo(42); //moves flap left to let orange balls out
+                setEPWM3A_RCServo(45); //moves flap left to let orange balls out initially 50
             }
             if (state6Count <= 250) { //moving forwards
                 vref = 0.5;
@@ -1135,80 +1136,17 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             state6Count++;
             break;
         case 10:    //Right wall follow TK
-            if (right_wall_follow_state == 1) {
-                //Left Turn
-                turn = Kp_front_wall*(14.5 - LADARfront);   //Tune this
-                vref = front_turn_velocity;
-                if (LADARfront > left_turn_Stop_threshold) {
-                    right_wall_follow_state = 2;
-                }
-            } else if (right_wall_follow_state == 2) {
-                //Right Wall Follow
-                turn = Kp_right_wall*(ref_right_wall - LADARrightfront);
-                vref = foward_velocity;
-                if (LADARfront < left_turn_Start_threshold) {
-                    right_wall_follow_state = 1;
-                }
-            }
-            if (turn > turn_saturation) {
-                turn = turn_saturation;
-            }
-            if (turn < -turn_saturation) {
-                turn = -turn_saturation;
-            }
 
-            //robot wall follows for 5 seconds then goes back towards X, Y (case 1) TK
-            WallFollowtime++;
+            vref = 0;
+            turn = 0;
 
-            //breakaway with bug algorithm  TK
-            tempcos = cosf(ROBOTps.theta);
-            tempsin = sinf(ROBOTps.theta);
-            YinRobot = -waypoints[wayindex].x*tempsin + waypoints[wayindex].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos;
-
-            if ( ((WallFollowtime > 3000) && (YinRobot > 0.3)) || ((WallFollowtime > 3000) && (LADARfront > 1.3))) {
+            if (state10Count == 1000) {
                 RobotState = 1;
                 StartAstar = 1;
                 state1Count = 0;
                 checkfronttally = 0;
             }
-            break;
-        case 11:    //Left wall follow  TK
-            if (left_wall_follow_state == 1) {
-                //right Turn
-                turn = -Kp_front_wall*(14.5 - LADARfront);
-                vref = front_turn_velocity;
-                if (LADARfront > left_turn_Stop_threshold) {
-                    left_wall_follow_state = 2;
-                }
-            } else if (left_wall_follow_state == 2) {
-                //left Wall Follow
-                turn = Kp_left_wall*(ref_right_wall - LADARleftfront);
-                vref = foward_velocity;
-                if (LADARfront < left_turn_Start_threshold) {
-                    left_wall_follow_state = 1;
-                }
-            }
-            if (turn > turn_saturation) {
-                turn = turn_saturation;
-            }
-            if (turn < -turn_saturation) {
-                turn = -turn_saturation;
-            }
-
-            //robot wall follows for 5 seconds then goes back towards X, Y (case 1) TK
-            WallFollowtime++;
-
-            //breakaway with bug algorithm  TK
-            tempcos = cosf(ROBOTps.theta);
-            tempsin = sinf(ROBOTps.theta);
-            YinRobot = -waypoints[wayindex].x*tempsin + waypoints[wayindex].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos;
-
-            if ( ((WallFollowtime > 3000) && (YinRobot > -0.3)) || ((WallFollowtime > 3000) && (LADARfront > 1.3))) {
-                RobotState = 1;
-                StartAstar = 1;
-                state1Count = 0;
-                checkfronttally = 0;
-            }
+            state10Count++;
 
             break;
 
@@ -1217,21 +1155,42 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             //code will use col centroid for the center camera view
             //change the centroid so that zero is in the center of the view
             //centroid will be a value between -160 and 160
-            if (MaxColThreshold1 == 0 || MaxAreaThreshold1 < 3) {
-                vref = 0;
-                turn = 0;
+
+            if (((LADARfront < 1.2)||(LADARentireright<0.8)||(LADARentireleft<0.8)) && (ROBOTps.y >= 0)) {  //might need to modify entireright entireleft values
+                vref = 0.2;
+                checkfronttally++;
+                if (checkfronttally > 120) { // check if LADARfront < 1.2 for 310ms or 3 LADAR samples
+                    RobotState = 10;
+                    state10Count = 0;
+                }
             } else {
-                vref = 0.75;
+                checkfronttally = 0;
+            }
+
+            if (MaxColThreshold1 == 0 || MaxAreaThreshold1 < 3) {
+
+                if (state20Count >= 1500 && state20Count <= 2500) {
+                    vref = 0.25;
+                    turn = 0.0;
+                } else {
+                    vref = 0.0;
+                    turn = 0.0;
+                }
+            } else {
+                vref = 0.5;
                 turn = kpvision * (0.0 - colcentroid);
             }
 
             //bottom row number for purple is 425
             colcentroid = MaxColThreshold1 - 160.0;
             if (MaxAreaThreshold1 > 546.0) { //546 is the initial number for orange
+                setEPWM3A_RCServo(45); //orange ball left
                 state22Count = 1;
                 RobotState = 22;
-                ballcolor = 1; //RG for labview golfball color
+
             }
+
+            state20Count++;
             break;
 
         case 22:    //Simulating you waiting for gripper door to open   TK
@@ -1239,21 +1198,14 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
             vref = 0;
             turn = 0;
-
-            if (state22Count == 1) {
-                setEPWM3A_RCServo(42); //orange ball left
-            }
-            //Open gripper door here DR LE
-            if(state22Count == 900) {
-                setEPWM5A_RCServo(-90);
-            }
             //if 1 sec has gone by switch to RobotState 24
             if(state22Count == 1000) {
+                //Open gripper door here DR LE
+                setEPWM5A_RCServo(-90);
                 state24Count = 1;
                 RobotState = 24;
-            } else {
-                state22Count++;
             }
+            state22Count++;
             break;
 
         case 24:
@@ -1281,10 +1233,11 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             if (state26Count == 1) {
                 //Close gripper door DR LE
                 setEPWM5A_RCServo(90);
+                ballcolor = 1; //RG for labview golfball color
             }
 
-            if (state26Count == 500) {
-                setEPWM3A_RCServo(-42); //flap door to the right
+            if (state26Count == 750) {
+                setEPWM3A_RCServo(0); //was -50
             }
 
             //if 1 sec has gone by switch to RobotState 1
@@ -1294,6 +1247,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             } else {
                 state26Count++;
             }
+
             break;
 
         case 30:    //Follow Purple Ball TK
@@ -1301,19 +1255,39 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             //code will use col centroid for the center camera view
             //change the centroid so that zero is in the center of the view
             //centroid will be a value between -160 and 160
-            colcentroid = MaxColThreshold2 - 160.0;
-            if (MaxAreaThreshold2 > 400.0) { //425 is the initial number for purple
-                state32Count = 1;
-                RobotState = 32;
-                ballcolor = 0; //RG to give labview the ball color
-            }
-            if (MaxColThreshold2 == 0 || MaxAreaThreshold2 < 3) {
-                vref = 0;
-                turn = 0;
+
+            if (((LADARfront < 1.2)||(LADARentireright<0.8)||(LADARentireleft<0.8)) && (ROBOTps.y >= 0)) {  //might need to modify entireright entireleft values
+                vref = 0.2;
+                checkfronttally++;
+                if (checkfronttally > 120) { // check if LADARfront < 1.2 for 310ms or 3 LADAR samples
+                    RobotState = 10;
+                    state10Count = 0;
+                }
             } else {
-                vref = 0.75;
+                checkfronttally = 0;
+            }
+
+            if (MaxColThreshold2 == 0 || MaxAreaThreshold2 < 3) {
+                if (state30Count >= 1500 && state30Count <= 2500) {
+                    vref = 0.25;
+                    turn = 0.0;
+                } else {
+                    vref = 0.0;
+                    turn = 0.0;
+                }
+            } else {
+                vref = 0.5;
                 turn = kpvision * (0.0 - colcentroid);
             }
+
+            colcentroid = MaxColThreshold2 - 160.0;
+            if (MaxAreaThreshold2 > 450.0) { //425 is the initial number for purple
+                setEPWM3A_RCServo(-50); //purple ball right
+                state32Count = 1;
+                RobotState = 32;
+            }
+
+            state30Count++;
             break;
 
         case 32:    //Simulating you waiting for gripper door to open   TK
@@ -1321,21 +1295,14 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
 
             vref = 0;
             turn = 0;
-
-            if (state32Count == 1) {
-                setEPWM3A_RCServo(-42);
-            }
-            //Open gripper door here DR LE
-            if(state32Count == 900) {
-                setEPWM5A_RCServo(-90);
-            }
             //if 1 sec has gone by switch to RobotState 34
             if(state32Count == 1000) {
+                //Open gripper door here DR LE
+                setEPWM5A_RCServo(-90);
                 state34Count = 1;
                 RobotState = 34;
-            } else {
-                state32Count++;
             }
+            state32Count++;
             break;
 
         case 34:    //Simulating you waiting for gripper door to open    TK
@@ -1363,18 +1330,19 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             if (state36Count == 1) {
                 //Close gripper door DR LE
                 setEPWM5A_RCServo(90);
+                ballcolor = 0; //RG to give labview the ball color
             }
 
-            if (state36Count == 500) {
-                setEPWM3A_RCServo(42);
+            if (state36Count == 750) {
+                setEPWM3A_RCServo(0); //was 45
             }
             //if 1 sec has gone by switch to RobotState 1
             if(state36Count == 1000) {
                 RobotState = 1;
                 state1Count = 0;
             } else {
-                
-                
+
+
                 state36Count++;
             }
             break;
@@ -1409,7 +1377,7 @@ __interrupt void SWI1_HighestPriority(void)     // EMIF_ERROR
             //DataToLabView.floatData[5] = (float)RobotState;
             DataToLabView.floatData[5] = golfballcount;
             DataToLabView.floatData[6] = (float)statePos;
-            DataToLabView.floatData[7] = LADARfront;
+            DataToLabView.floatData[7] = RobotState; //LADARfront originally
             LVsenddata[0] = '*';  // header for LVdata
             LVsenddata[1] = '$';
             for (i=0;i<LVNUM_TOFROM_FLOATS*4;i++) {
@@ -1580,19 +1548,20 @@ __interrupt void SWI2_MiddlePriority(void)     // RAM_CORRECTABLE_ERROR
             ladar_pts[LADARi].x = LADARxoffset + ladar_data[LADARi].distance_ping*cosf(ladar_data[LADARi].angle + ROBOTps.theta);
             ladar_pts[LADARi].y = LADARyoffset + ladar_data[LADARi].distance_ping*sinf(ladar_data[LADARi].angle + ROBOTps.theta);
             //make sure to not check fot map tallies when turning or moving fast
-
-            if (LADARi == 26) || () || () || () ||() ) { //has to be certain ladar indexes to check for obstacles
-                int16_t temprow = 11 - round(ladar_pts[LADARi].y);
-                int16_t tempcol = 5 + round(ladar_pts[LADARi].x);
-                if ((temprow >= 0) && (temprow < = 11) && (tempcol >= 0) && (tempcol < = 10) ) {
-                    if (maptally[temprow*11+tempcol].tally < 5) {
-                        maptally[temprow*11+tempcol].tally++;
-                        if (maptally[temprow*11+tempcol].tally == 5) {
-                            map[temprow*11+tempcol] = 'x';
-                            StartAstar = 1;
+            if (!(vref > 1.0 || fabs(turn) > 0.4)) {
+                if ((LADARi == 28) || (LADARi == 55) || (LADARi == 114) || (LADARi == 172) ||(LADARi == 190) ) { //has to be certain ladar indexes to check for obstacles
+                    int16_t temprow = 11 - round(ladar_pts[LADARi].y);
+                    int16_t tempcol = 5 + round(ladar_pts[LADARi].x);
+                    if ((temprow >= 0) && (temprow <= 11) && (tempcol >= 0) && (tempcol <= 10)) {
+                        if (maptally[temprow*11+tempcol].tally < 5) {
+                            maptally[temprow*11+tempcol].tally++;
+                            if (maptally[temprow*11+tempcol].tally == 5) {
+                                map[temprow*11+tempcol] = 'x';
+                                StartAstar = 1;
+                            }
                         }
-                    }
 
+                    }
                 }
             }
         }
@@ -1640,6 +1609,23 @@ __interrupt void SWI2_MiddlePriority(void)     // RAM_CORRECTABLE_ERROR
 
             ladar_pts[LADARi].x = LADARxoffset + ladar_data[LADARi].distance_pong*cosf(ladar_data[LADARi].angle + ROBOTps.theta);
             ladar_pts[LADARi].y = LADARyoffset + ladar_data[LADARi].distance_pong*sinf(ladar_data[LADARi].angle + ROBOTps.theta);
+
+            if (!(vref > 1.0 || fabs(turn) > 0.4)) {
+                if ((LADARi == 28) || (LADARi == 55) || (LADARi == 114) || (LADARi == 172) ||(LADARi == 190) ) { //has to be certain ladar indexes to check for obstacles
+                    int16_t temprow = 11 - round(ladar_pts[LADARi].y);
+                    int16_t tempcol = 5 + round(ladar_pts[LADARi].x);
+                    if ((temprow >= 0) && (temprow <= 11) && (tempcol >= 0) && (tempcol <= 10)) {
+                        if (maptally[temprow*11+tempcol].tally < 5) {
+                            maptally[temprow*11+tempcol].tally++;
+                            if (maptally[temprow*11+tempcol].tally == 5) {
+                                map[temprow*11+tempcol] = 'x';
+                                StartAstar = 1;
+                            }
+                        }
+
+                    }
+                }
+            }
 
         }
     }

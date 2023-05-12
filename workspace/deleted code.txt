@@ -1,0 +1,95 @@
+            if (state20Count > 4000) {
+                RobotState = 1;
+            }
+
+case 1:
+
+//                        if (LADARentireright > LADARentireleft) {
+//                            RobotState = 11; // left Wall follow
+//                            WallFollowtime = 0;
+//                            left_wall_follow_state = 1;
+//                        } else {
+//                            RobotState = 10; // right Wall follow
+//                            WallFollowtime = 0;
+//                            right_wall_follow_state = 1;
+//                        }
+
+case 10:
+
+            //            if (right_wall_follow_state == 1) {
+            //                //Left Turn
+            //                turn = Kp_front_wall*(14.5 - LADARfront);   //Tune this
+            //                vref = front_turn_velocity;
+            //                if (LADARfront > left_turn_Stop_threshold) {
+            //                    right_wall_follow_state = 2;
+            //                }
+            //            } else if (right_wall_follow_state == 2) {
+            //                //Right Wall Follow
+            //                turn = Kp_right_wall*(ref_right_wall - LADARrightfront);
+            //                vref = foward_velocity;
+            //                if (LADARfront < left_turn_Start_threshold) {
+            //                    right_wall_follow_state = 1;
+            //                }
+            //            }
+            //            if (turn > turn_saturation) {
+            //                turn = turn_saturation;
+            //            }
+            //            if (turn < -turn_saturation) {
+            //                turn = -turn_saturation;
+            //            }
+            //
+            //            //robot wall follows for 5 seconds then goes back towards X, Y (case 1) TK
+            //            WallFollowtime++;
+            //
+            //            //breakaway with bug algorithm  TK
+            //            tempcos = cosf(ROBOTps.theta);
+            //            tempsin = sinf(ROBOTps.theta);
+            //            YinRobot = -waypoints[wayindex].x*tempsin + waypoints[wayindex].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos;
+            //
+            //            if ( ((WallFollowtime > 3000) && (YinRobot > 0.3)) || ((WallFollowtime > 3000) && (LADARfront > 1.3))) {
+            //                RobotState = 1;
+            //                StartAstar = 1;
+            //                state1Count = 0;
+            //                checkfronttally = 0;
+            //            }
+
+
+
+case 11:
+
+//            if (left_wall_follow_state == 1) {
+            //                //right Turn
+            //                turn = -Kp_front_wall*(14.5 - LADARfront);
+            //                vref = front_turn_velocity;
+            //                if (LADARfront > left_turn_Stop_threshold) {
+            //                    left_wall_follow_state = 2;
+            //                }
+            //            } else if (left_wall_follow_state == 2) {
+            //                //left Wall Follow
+            //                turn = Kp_left_wall*(ref_right_wall - LADARleftfront);
+            //                vref = foward_velocity;
+            //                if (LADARfront < left_turn_Start_threshold) {
+            //                    left_wall_follow_state = 1;
+            //                }
+            //            }
+            //            if (turn > turn_saturation) {
+            //                turn = turn_saturation;
+            //            }
+            //            if (turn < -turn_saturation) {
+            //                turn = -turn_saturation;
+            //            }
+            //
+            //            //robot wall follows for 5 seconds then goes back towards X, Y (case 1) TK
+            //            WallFollowtime++;
+            //
+            //            //breakaway with bug algorithm  TK
+            //            tempcos = cosf(ROBOTps.theta);
+            //            tempsin = sinf(ROBOTps.theta);
+            //            YinRobot = -waypoints[wayindex].x*tempsin + waypoints[wayindex].y*tempcos + ROBOTps.x*tempsin - ROBOTps.y*tempcos;
+            //
+            //            if ( ((WallFollowtime > 3000) && (YinRobot > -0.3)) || ((WallFollowtime > 3000) && (LADARfront > 1.3))) {
+            //                RobotState = 1;
+            //                StartAstar = 1;
+            //                state1Count = 0;
+            //                checkfronttally = 0;
+            //            }
